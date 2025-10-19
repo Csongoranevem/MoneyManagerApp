@@ -1,0 +1,27 @@
+Tech stack:
+adatbázis: MySQL
+backend: NodeJS + ExpressJS
+frontend: Angular
+
+
+Táblák:
+Users: ID, name, email, password, role(user, admin), status
+Wallets: ID userID, name, balance
+Categories: ID, name (pl. Étkezés, Számlák, Fizetés, Ajándék, Ruházat, stb...)
+Transactions: ID, walletID, amount, categoryID, type (kiadás / bevétel)
+
+
+A felhaszánlók regisztálhatnak, login / logout/ profil, jelszómódosítás
+Kezelhetnek "Pénztárcákat"
+Kezelhetnek tranzakciókat (bevétel / kiadás, pénztárca, összeg és kategória megadással)
+Kezelhetnek tranzakció kategóriákat (pl beásárlás, szórakozás stb., amit 1x felvett ,az legközelebb már select-ből választhatja)
+Naptárban és Grafikonon mutassa a tranzakciókat, valamint grafikonon a pénztárcák egyenlegét is!
+
+Extra feladat:
+Lehessen beállítani állandó tranzakciókat (pl. fizetés, számlabefizetés stb., amik bizonyos időnként automatikusan ismétlődnek.)
+Lehessen beállítani figyelmeztetési korlátokat a pénztárcákra ( minimum érték figyelmeztetés, vagy ha elért egy kitűzött célértéket)
+
+
+
+
+
