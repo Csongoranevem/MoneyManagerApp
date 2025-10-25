@@ -1,0 +1,2 @@
+Csongor: SQL, pénztárca, tranzakció, naptár, grafikon
+Beni: Login Regisztráció Profil, Grafikai tervek
