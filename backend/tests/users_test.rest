@@ -7,3 +7,66 @@
 
 GET {{url}}/users
 Content-Type: application/json
+
+
+### Get user by ID
+GET {{url}}/users/3
+Content-Type: application/json
+
+###Post one user
+POST {{url}}/users
+Content-Type: application/json
+
+{
+    "name": "TRAlalelo", 
+    "password": "123", 
+    "email": "Ember@gmail.com", 
+    "status": 0, 
+    "role": "admin"
+   
+}
+
+###Login user
+POST {{url}}/users/login
+Content-Type: application/json
+
+{
+    
+    "email": "ember@gmail.com",
+    "password": "1234"
+    
+}
+
+###Update one user
+PATCH {{url}}/users/8
+Content-Type: application/json
+
+{
+    "name": "embe", 
+    "password": "123", 
+    "email": "Ember@gmail.com", 
+    "status": 0, 
+    "role": "user"
+}
+
+### Delete user by ID
+DELETE {{url}}/users/7
+
+###Update user pass by id
+PATCH {{url}}/users/password/8
+Content-Type: application/json
+
+{
+    "password": "1234"
+}
+
+###Update profile email and name
+PATCH {{url}}/users/profile/8
+Content-Type: application/json
+
+{
+    "name": "ember", 
+    "email": "ember@gmail.com"
+}
+
+
