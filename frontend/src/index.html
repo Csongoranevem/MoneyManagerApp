@@ -6,6 +6,21 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <!-- Bootstrap Icons CDN for theme toggle icon -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <!-- Apply saved theme as early as possible to avoid a flash of the default theme -->
+  <script>
+    (function(){
+      try{
+        var t = localStorage.getItem('theme');
+        if(t){
+          document.documentElement.setAttribute('data-bs-theme', t);
+          // also set body if it's already available
+          if(document.body) document.body.setAttribute('data-bs-theme', t);
+        }
+      }catch(e){/* ignore */}
+    })();
+  </script>
 </head>
 <body data-bs-theme="dark">
   <app-root></app-root>

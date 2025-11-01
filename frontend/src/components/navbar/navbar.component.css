@@ -1,4 +1,48 @@
 #nav_cont {
     background-color: #f8f9fa;
     border-radius: 0 0 26px 26px;
+    width: 70%;
+    margin: auto;
+    box-shadow:0 0 4px var(--bs-secondary-bg);
+
+}
+
+
+#mainlogo {
+    margin-right: 20px;
+    width: 30px;
+    border-radius: 10px;
+}
+
+.theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 32px;
+    padding: 0.15rem 0.4rem;
+    border: none;
+}
+
+.theme-toggle .bi {
+    font-size: 1.05rem;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: var(--bs-light);
+}
+
+.nav-link {
+    font-size: 1.1rem;
+    color: var(--bs-secondary);
+    border-radius: 50px;
+    transition: 0.3s;
+}
+
+.nav-link:hover {
+    color: var(--bs-light);
+    border-radius: 8px;
+    background-color: var(--bs-secondary-bg);
 }
