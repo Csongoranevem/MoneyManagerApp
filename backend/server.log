@@ -1,0 +1,10 @@
+[2025-11-01 12:55:11] [[32minfo[39m]: Server listening on 3000
+[2025-11-01 12:57:04] [[32minfo[39m]: Server listening on 3000
+[2025-11-01 12:58:12] [[32minfo[39m]: Server listening on 3000
+[2025-11-01 13:01:33] [[32minfo[39m]: Server listening on 3000
+[2025-11-01 13:01:59] [[32minfo[39m]: Server listening on 3000
+[2025-11-01 13:02:48] [[32minfo[39m]: Server listening on 3000
+[2025-11-01 13:03:25] [[32minfo[39m]: Server listening on 3000
+[2025-11-01 13:03:36] [[32minfo[39m]: Server listening on 3000
+[2025-11-01 13:03:48] [[32minfo[39m]: GET /users - 0 rekord(s) sent. |18ms
+[2025-11-01 13:07:01] [[32minfo[39m]: GET /users - 5 rekord(s) sent. |2ms
