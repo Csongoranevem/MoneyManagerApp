@@ -10,3 +10,19 @@
     border-radius: 5px;
     box-shadow: -6px 10px 0px var(--bs-border-color);
 }
+
+a{
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#wallets{
+    display: inline-block;
+}
+
+.wallet-link{
+    margin-right: 15px;
+    font-weight: bold;
+    color: var(--bs-primary-text-emphasis);
+    font-variant: small-caps;
+}

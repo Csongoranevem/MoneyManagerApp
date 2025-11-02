@@ -3,6 +3,7 @@ import { ApiService } from '../../services/api.service';
 import { Transaction } from '../../interfaces/transaction';
 import { CommonModule } from '@angular/common';
 import { Category } from '../../interfaces/categories';
+import { Wallet } from '../../interfaces/wallet';
 
 @Component({
   selector: 'app-wallet',
@@ -16,8 +17,13 @@ export class WalletComponent implements OnInit {
 
   ngOnInit(): void {
     this.getWalletTransactions();
+    this.getWallets();
+    this.getWalletBalance();
   }
 
+  userId: number = 1; // login utan megkapja
+  wallets: Wallet[] = [];
+  walletID: number = 1;
   walletBalance: number = 0;
   walletTransactions: Transaction[] = [];
   @Input() categories: Category[] | null = null;
@@ -27,13 +33,21 @@ export class WalletComponent implements OnInit {
     this.getWalletBalance();
   }
 
+  async getWallets() {
+    const response = await this.apiService.select('wallets', this.userId);
+    this.wallets = response.data;
+
+  }
+
   async getWalletBalance() {
-    const response = await this.apiService.selectAll('wallets');
-    this.walletBalance = response.data.balance;
+
+    const response = await this.apiService.select('wallets/balance', this.walletID);
+    this.walletBalance = response.data[0].totalBalance;
+    console.log(this.walletBalance);
   }
 
   async getWalletTransactions() {
-    const response = await this.apiService.selectAll('transactions');
+    const response = await this.apiService.select('transactions', this.walletID);
     this.walletTransactions = response.data;
   }
 
@@ -51,7 +65,6 @@ export class WalletComponent implements OnInit {
   }
 
   getCategoryName(categoryID: number): string {
-    console.log(this.categories);
     const category = this.categories?.find(cat => cat.id === categoryID);
     return category ? category.name : 'Ismeretlen';
 

@@ -13,6 +13,15 @@ router.get("/", (req, res)=>{
     },req);
 })
 
+router.get('/balance/:userId', (req, res) => {
+    const userId = req.params.userId;
+
+    query(`SELECT SUM(balance) as totalBalance FROM wallets WHERE userID = ?`, [userId], (error, results) => {
+        if (error) return res.status(500).json({ errno: error.errno, msg: "Hiba történt :(" });
+
+        res.status(200).json(results);
+    }, req);
+});
 
 router.get("/:userId", (req, res)=>{
     const userId = req.params.userId
