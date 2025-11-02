@@ -1,0 +1,8 @@
+#msgBox {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1050;
+    width: 200px;
+    height: auto;
+}

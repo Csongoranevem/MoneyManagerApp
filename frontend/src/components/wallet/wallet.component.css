@@ -1,0 +1,12 @@
+#walletPNG {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 20px;
+}
+
+#walletBox{
+    margin-top: 50px;
+    border: var(--bs-border-color) 1px solid;
+    border-radius: 5px;
+    box-shadow: -6px 10px 0px var(--bs-border-color);
+}

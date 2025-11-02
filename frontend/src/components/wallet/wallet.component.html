@@ -1,0 +1,37 @@
+<div class="container mt-3 d-flex flex-lg-row flex-column justify-content-between" id="walletBox">
+    <div class="left">
+        <img src="../../assets/Walletpng.png" alt="walletPNG" id="walletPNG">
+        <h3>Összeg: {{walletBalance || 0}} Ft</h3>
+        <div class="buttons d-flex flex-column mt-3 col-lg-12">
+            <button class="btn btn-primary mb-2" (click)="filter('kiadás')">Kiadás</button>
+            <button class="btn btn-primary" (click)="filter('bevétel')">Bevétel</button>
+            <button class="btn btn-warning mt-3" (click)="filter('összes')">Szűrés törlése</button>
+            <button class="btn btn-success mt-5" (click)="addTransaction()">Hozzáadás</button>
+        </div>
+
+    </div>
+    <div class="right mt-3 col-lg-8">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Összeg</th>
+                    <th scope="col">Kategória</th>
+                    <th scope="col">Típus</th>
+                    <th scope="col">Műveletek</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let transaction of walletTransactions; let i = index">
+                    <th scope="row">{{i + 1}}</th>
+                    <td>{{transaction.amount}} Ft</td>
+                    <td>{{getCategoryName(transaction.categoryID)}}</td>
+                    <td>{{transaction.type}}</td>
+                    <td>
+                        <button class="btn btn-danger btn-sm me-2" (click)="deleteTransaction(transaction.ID!)"><i class="bi bi-x-lg"></i></button>
+                        <button class="btn btn-warning btn-sm" (click)="editTransaction(transaction.ID!)"><i class="bi bi-pencil"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</div>
