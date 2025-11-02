@@ -24,12 +24,31 @@ router.get("/:id", (req, res)=>{
 
 //új user insert
 router.post("/", (req, res)=>{
+    
     const { name, password, email, status, role} = req.body;
-    query(`INSERT INTO users(name, password, email, status, role) VALUES (?,?,?,?,?)` ,[ name, password, email, status, role], (error, results) =>{
-        if(error) return res.status(500).json({errno: error.errno, msg: "Hiba történt :("}) ;
-      
-        res.status(200).json(results)
-    },req);
+    
+    query(`SELECT * FROM users WHERE email = ?`, [email], (error, results) => {
+    if (error) {
+      return res.status(500).json({ errno: error.errno, msg: "Database error" });
+    }
+
+    if (results.length > 0) {
+      return res.status(400).json({ msg: "Email already exists" });
+    }
+
+    query(
+      `INSERT INTO users(name, password, email, status, role) VALUES (?, ?, ?, ?, ?)`,
+      [name, password, email, status, role],
+      (insertError, insertResults) => {
+        if (insertError) {
+          return res.status(500).json({ errno: insertError.errno, msg: "Insert failed" });
+        }
+
+        res.status(200).json(insertResults);
+      },
+      req
+    );
+  }, req);
 })
 //login user
 router.post("/login", (req, res) => {

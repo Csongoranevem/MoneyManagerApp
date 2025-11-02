@@ -1,1 +1,28 @@
-<p>registration works!</p>
+
+<div class="container">
+    <h3 class="text-center mt-3">Registration</h3>
+    <hr>
+    <div class="form-floating mb-3">
+        <input type="email" class="form-control" id="floatingInput" placeholder="" [(ngModel)]="NewUser.email" value="">
+        <label for="floatingInput">Email address</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="nameinput" placeholder="" [(ngModel)]="NewUser.name" value="">
+        <label for="nameinput">Name</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="password" class="form-control" id="floatingPassword" placeholder="" [(ngModel)]="NewUser.password">
+        <label for="floatingPassword">Password</label>
+        
+    </div>
+    <div class="form-floating">
+        <input type="password" class="form-control" id="confirmPassword" placeholder="" [(ngModel)]="confirmpassword">
+        <label for="confirmPassword">Confirm Password</label>
+        
+    </div>
+    
+    <div class="d-flex gap-2 gombm">
+        <button class="btn btn-primary"(click)="register()">Registration</button>
+        <button class="btn btn-secondary" routerLink="/login">Login</button>
+    </div>
+</div>

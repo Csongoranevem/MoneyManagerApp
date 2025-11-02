@@ -20,7 +20,7 @@ Content-Type: application/json
 {
     "name": "TRAlalelo", 
     "password": "123", 
-    "email": "Ember@gmail.com", 
+    "email": "Embereke@gmail.com", 
     "status": 0, 
     "role": "admin"
    
