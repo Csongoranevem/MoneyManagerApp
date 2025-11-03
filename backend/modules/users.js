@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const {query} = require('../utils/database');
+var SHA1 = require("crypto-js/sha1");
+const passwdRegExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
 
 //userek lehívása
 router.get("/", (req, res)=>{
@@ -22,7 +24,7 @@ router.get("/:id", (req, res)=>{
     },req);
 })
 
-//új user insert
+//új user insert(register)
 router.post("/", (req, res)=>{
     
     const { name, password, email, status, role} = req.body;
@@ -38,7 +40,7 @@ router.post("/", (req, res)=>{
 
     query(
       `INSERT INTO users(name, password, email, status, role) VALUES (?, ?, ?, ?, ?)`,
-      [name, password, email, status, role],
+      [name, SHA1(password).toString(), email, status, role],
       (insertError, insertResults) => {
         if (insertError) {
           return res.status(500).json({ errno: insertError.errno, msg: "Insert failed" });
@@ -54,7 +56,7 @@ router.post("/", (req, res)=>{
 router.post("/login", (req, res) => {
   const { email, password } = req.body;
   query(
-    `SELECT * FROM users WHERE email = ? AND password = ?`,[email, password],(error, results) => {
+    `SELECT * FROM users WHERE email = ? AND password = ?`,[email, SHA1(password).toString()],(error, results) => {
       if (error) return res.status(500).json({ errno: error.errno, msg: "Hiba történt :(" });
       if (results.length === 0) {
         return res.status(401).json({ msg: "Hibás email vagy jelszó!" });
@@ -79,7 +81,7 @@ router.patch("/:id", (req, res)=>{
 router.patch("/password/:id", (req, res)=>{
     let ID = req.params.id 
     const {password} = req.body;
-    query(`UPDATE users SET password=? WHERE ID =?` ,[  password, ID], (error, results) =>{
+    query(`UPDATE users SET password=? WHERE ID =?` ,[  SHA1(password).toString(), ID], (error, results) =>{
         if(error) return res.status(500).json({errno: error.errno, msg: "Hiba történt :("}) ;
       
         res.status(200).json(results)
