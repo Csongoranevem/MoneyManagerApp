@@ -13,7 +13,7 @@ Content-Type: application/json
 GET {{url}}/users/3
 Content-Type: application/json
 
-###Post one user
+###Register
 POST {{url}}/users
 Content-Type: application/json
 
@@ -33,7 +33,7 @@ Content-Type: application/json
 {
     
     "email": "ember@gmail.com",
-    "password": "1234"
+    "password": "123"
     
 }
 
@@ -57,7 +57,7 @@ PATCH {{url}}/users/password/8
 Content-Type: application/json
 
 {
-    "password": "1234"
+    "password": "123"
 }
 
 ###Update profile email and name

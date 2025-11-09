@@ -38,18 +38,18 @@ router.post("/", (req, res)=>{
       return res.status(400).json({ msg: "Email already exists" });
     }
 
-    query(
-      `INSERT INTO users(name, password, email, status, role) VALUES (?, ?, ?, ?, ?)`,
-      [name, SHA1(password).toString(), email, status, role],
-      (insertError, insertResults) => {
-        if (insertError) {
-          return res.status(500).json({ errno: insertError.errno, msg: "Insert failed" });
-        }
+      query(
+        `INSERT INTO users(name, password, email, status, role) VALUES (?, ?, ?, ?, ?)`,
+        [name, SHA1(password).toString(), email, status, role],
+        (insertError, insertResults) => {
+          if (insertError) {
+            return res.status(500).json({ errno: insertError.errno, msg: "Insert failed" });
+          }
 
-        res.status(200).json(insertResults);
-      },
-      req
-    );
+          res.status(200).json(insertResults);
+        },
+        req
+      );
   }, req);
 })
 //login user
@@ -59,7 +59,7 @@ router.post("/login", (req, res) => {
     `SELECT * FROM users WHERE email = ? AND password = ?`,[email, SHA1(password).toString()],(error, results) => {
       if (error) return res.status(500).json({ errno: error.errno, msg: "Hiba történt :(" });
       if (results.length === 0) {
-        return res.status(401).json({ msg: "Hibás email vagy jelszó!" });
+        return res.status(400).json({ msg: "Hibás email vagy jelszó!" });
       }
       res.status(200).json(results[0]); 
     },
