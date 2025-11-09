@@ -24,7 +24,7 @@ export class ApiService {
     } catch (err) {
       console.log(err)
       return {
-        status: 200,
+        status: 400,
         data: err
 
       }
@@ -41,7 +41,7 @@ export class ApiService {
       }
     } catch (err) {
       return {
-        status: 200,
+        status: 400,
         data: Messages('danger', 'Hiba!', 'Hiba történt a kategória törlésekor!')
       }
     }
@@ -60,7 +60,7 @@ export class ApiService {
       }
     } catch (err) {
       return {
-        status: 200,
+        status: 400,
         message: 'Hiba a felvételben',
         data: err
       }
@@ -80,7 +80,7 @@ export class ApiService {
       }
     } catch (err) {
       return {
-        status: 200,
+        status: 400,
         message: 'Hiba történt a bejelentkezésnél',
         data: err
       }
@@ -100,9 +100,26 @@ export class ApiService {
       }
     } catch (err) {
       return {
-        status: 200,
+        status: 400,
         message: 'Hiba történt a regisztrációnál',
         data: err
+      }
+    }
+  }
+  async profileupdate(table: string, id: number, data: any) {
+    try {
+      const res = await axios.patch(
+        `${this.SERVER}/${table}/${id}`,
+        data, // api kérés
+        { headers: { 'Content-Type': 'application/json' } })
+      return {
+        status: 200,
+        data: res.data
+      }
+    } catch (err) {
+      return {
+        status: 400,
+        data: Messages('danger', 'Hiba!', 'Hiba történt a kategória törlésekor!')
       }
     }
   }
@@ -119,7 +136,7 @@ export class ApiService {
       }
     } catch (err) {
       return {
-        status: 200,
+        status: 400,
         data: Messages('danger', 'Hiba!', 'Hiba történt a kategória törlésekor!')
       }
     }
@@ -134,7 +151,7 @@ export class ApiService {
       }
     } catch (err) {
       return {
-        status: 200,
+        status: 400,
         data: Messages('danger', 'Hiba!', 'Hiba történt a kategória törlésekor!')
       }
     }
@@ -149,7 +166,7 @@ export class ApiService {
       }
     } catch (err) {
       return {
-        status: 200,
+        status: 400,
         data: Messages('danger', 'Hiba!', 'Hiba történt a kategória törlésekor!')
       }
     }

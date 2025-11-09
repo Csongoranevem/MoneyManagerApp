@@ -3,6 +3,6 @@ export interface Users{
     name:string,
     password:string,
     email:string,
-    status:boolean,
-    role: "admin" |"user"
+    status?:boolean,
+    role?: "admin" |"user"
 }

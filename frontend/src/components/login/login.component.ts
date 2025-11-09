@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { Users } from '../../interfaces/user';
 import { Resp } from '../../interfaces/response';
 import { AuthService } from '../../services/auth.service';
+import { MessageService } from '../../services/message.service';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,8 @@ export class LoginComponent {
   constructor(    
     private api:ApiService,
     private router:Router,
-    private auth:AuthService
+    private auth:AuthService,
+    private message:MessageService
     ){
   }
   
@@ -35,13 +37,17 @@ export class LoginComponent {
   rememberMe:boolean=false
   login(){
     if(this.User.email == "" || this.User.password ==""){
-      alert("Kérem töltse ki a mezőket")
+      this.message.show('danger', 'Hiba', "Nem adtál meg minden adatot!")
       return;
     }
 
     this.api.login('users/login',this.User).then((res:Resp)=>{
        if(res.status===500){
-        //this.message.show('danger', 'Hiba', res.message)
+        this.message.show('danger', 'Hiba',  `${res.message}`)
+        return
+      }
+      if(res.status===400){
+        this.message.show('danger', 'Hiba',  `${res.message}`)
         return
       }
       if(this.rememberMe){
@@ -49,8 +55,8 @@ export class LoginComponent {
       }
       if(res.status===200){
         this.auth.login(JSON.stringify(res.data))
-        //this.message.show('success','Ok', res.message)
-        alert("sikeres bejelentkezés")
+        this.message.show('success','Ok', `${res.message}`)
+       
         this.router.navigate(['/wallet']);
       }
     })

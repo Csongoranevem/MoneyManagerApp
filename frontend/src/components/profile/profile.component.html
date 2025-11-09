@@ -1,1 +1,35 @@
-<p>profile works!</p>
+
+<div class="container mt-3">
+    <h3>Profil</h3>
+<hr>
+    <div class="row">
+        <div class="col-lg-5 col-md-4">
+            <div class="mb-3">
+              <label for="Emailfield" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="Emailfield"  [(ngModel)]="User.email">
+            </div>
+            <div class="mb-3">
+                <label for="NameField" class="form-label">Név</label>
+                <input type="text" class="form-control" id="Namefield" [(ngModel)]="User.name">
+            </div>
+            <button type="submit" class="btn btn-primary" (click)="Profileupdate()">Adatmódosítás</button>
+        </div>
+        <div class="col-lg-5 col-md-4">
+            <div class="mb-3">
+                <label for="Passwordfield" class="form-label"  >Mostani jelszó</label>
+                <input type="password" class="form-control" id="oldPasswordfield" [(ngModel)]="oldpassword">
+                
+              </div>
+            <div class="mb-3">
+              <label for="Passwordfield" class="form-label">Új jelszó</label>
+              <input type="password" class="form-control" id="Passwordfield"  [(ngModel)]="newpassword">
+            </div>
+           
+            <div class="mb-3">
+                <label for="ConfirmPasswordfield" class="form-label">Új jelszó Megerősítés</label>
+                <input type="password" class="form-control" id="ConfirmPasswordfield"  [(ngModel)]="confirmpassword">
+            </div>
+            <button type="submit" class="btn btn-primary" (click)="Passwordupdate()">Jelszó módosítás</button>
+        </div>
+    </div>
+</div>

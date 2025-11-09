@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { Users } from '../../interfaces/user';
 import { Resp } from '../../interfaces/response';
 import { AuthService } from '../../services/auth.service';
+import { MessageService } from '../../services/message.service';
 
 
 @Component({
@@ -22,7 +23,8 @@ export class RegistrationComponent {
  constructor(    
      private api:ApiService,
      private router:Router,
-     private auth:AuthService
+     private message:MessageService
+     
      ){
    }
   confirmpassword:string=""
@@ -37,11 +39,11 @@ export class RegistrationComponent {
   }
   register(){
     if(this.NewUser.email == "" || this.NewUser.password =="" || this.NewUser.name =="" || this.confirmpassword ==""){
-      alert("Kérem töltse ki a mezőket")
+      this.message.show('danger', 'Hiba', "Nem adtál meg minden adatot!")
       return;
     }
     if(this.NewUser.password != this.confirmpassword){
-      alert("Kérem legyen ugyanaz azok a jelszavak")
+      this.message.show('danger', 'Hiba', "Nem ugyanaz a kettő jelszó!")
       return
     }
     
