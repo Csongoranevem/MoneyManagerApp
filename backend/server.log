@@ -1608,3 +1608,90 @@
 [2025-11-09 19:54:45] [[32minfo[39m]: PATCH /users/password/8 | 1 record(s) affected | 0 ms
 [2025-11-09 19:54:54] [[32minfo[39m]: PATCH /users/password/8 | 1 record(s) affected | 3 ms
 [2025-11-09 19:54:54] [[32minfo[39m]: PATCH /users/password/8 | 1 record(s) affected | 1 ms
+[2025-11-09 23:09:08] [[32minfo[39m]: Server listening on 3000
+[2025-11-09 23:10:03] [[32minfo[39m]: POST /users | 1 record(s) affected | 38 ms
+[2025-11-09 23:10:56] [[32minfo[39m]: POST /users | 1 record(s) affected | 1 ms
+[2025-11-09 23:11:48] [[32minfo[39m]: POST /users | 1 record(s) affected | 1 ms
+[2025-11-09 23:11:52] [[32minfo[39m]: POST /users | 0 record(s) affected | 0 ms
+[2025-11-09 23:11:52] [[32minfo[39m]: POST /users | 1 record(s) affected | 2 ms
+[2025-11-09 23:12:23] [[32minfo[39m]: POST /users/login | 1 record(s) affected | 1 ms
+[2025-11-09 23:12:23] [[32minfo[39m]: GET /wallets/1 | 1 record(s) sent | 6 ms
+[2025-11-09 23:12:23] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 1 ms
+[2025-11-09 23:12:23] [[32minfo[39m]: GET /categories | 5 record(s) sent | 2 ms
+[2025-11-09 23:12:23] [[32minfo[39m]: GET /transactions/1 | 3 record(s) sent | 1 ms
+[2025-11-09 23:12:28] [[32minfo[39m]: PATCH /users/profile/21 | 1 record(s) affected | 4 ms
+[2025-11-09 23:12:28] [[32minfo[39m]: PATCH /users/profile/21 | 1 record(s) affected | 1 ms
+[2025-11-09 23:14:54] [[32minfo[39m]: Server listening on 3000
+[2025-11-09 23:15:03] [[32minfo[39m]: Server listening on 3000
+[2025-11-09 23:15:08] [[32minfo[39m]: NO CONTEXT | 1 record(s) affected | 14 ms
+[2025-11-09 23:15:11] [[32minfo[39m]: NO CONTEXT | 0 record(s) affected | 2 ms
+[2025-11-09 23:15:11] [[32minfo[39m]: NO CONTEXT | 1 record(s) affected | 2 ms
+[2025-11-09 23:15:11] [[32minfo[39m]: NO CONTEXT | 1 record(s) affected | 0 ms
+[2025-11-09 23:15:18] [[32minfo[39m]: NO CONTEXT | 1 record(s) affected | 1 ms
+[2025-11-09 23:15:41] [[32minfo[39m]: Server listening on 3000
+[2025-11-09 23:15:46] [[32minfo[39m]: Server listening on 3000
+[2025-11-09 23:17:29] [[32minfo[39m]: POST /users/login | 1 record(s) affected | 14 ms
+[2025-11-09 23:17:29] [[32minfo[39m]: GET /wallets/1 | 1 record(s) sent | 1 ms
+[2025-11-09 23:17:29] [[32minfo[39m]: GET /categories | 5 record(s) sent | 1 ms
+[2025-11-09 23:17:29] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 2 ms
+[2025-11-09 23:17:29] [[32minfo[39m]: GET /transactions/1 | 3 record(s) sent | 0 ms
+[2025-11-09 23:17:33] [[32minfo[39m]: NO CONTEXT | 1 record(s) affected | 0 ms
+[2025-11-09 23:17:38] [[32minfo[39m]: NO CONTEXT | 0 record(s) affected | 0 ms
+[2025-11-09 23:17:38] [[32minfo[39m]: NO CONTEXT | 1 record(s) affected | 2 ms
+[2025-11-09 23:17:38] [[32minfo[39m]: NO CONTEXT | 1 record(s) affected | 0 ms
+[2025-11-09 23:18:47] [[32minfo[39m]: POST /users/login | 0 record(s) affected | 0 ms
+[2025-11-09 23:18:55] [[32minfo[39m]: POST /users/login | 1 record(s) affected | 1 ms
+[2025-11-09 23:18:55] [[32minfo[39m]: GET /wallets/1 | 1 record(s) sent | 1 ms
+[2025-11-09 23:18:55] [[32minfo[39m]: GET /categories | 5 record(s) sent | 1 ms
+[2025-11-09 23:18:55] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 1 ms
+[2025-11-09 23:18:55] [[32minfo[39m]: GET /transactions/1 | 3 record(s) sent | 1 ms
+[2025-11-09 23:19:02] [[32minfo[39m]: NO CONTEXT | 0 record(s) affected | 1 ms
+[2025-11-09 23:19:02] [[32minfo[39m]: NO CONTEXT | 1 record(s) affected | 1 ms
+[2025-11-09 23:19:02] [[32minfo[39m]: NO CONTEXT | 1 record(s) affected | 1 ms
+[2025-11-09 23:19:28] [[32minfo[39m]: Server listening on 3000
+[2025-11-09 23:19:37] [[32minfo[39m]: POST /users/login | 1 record(s) affected | 14 ms
+[2025-11-09 23:19:37] [[32minfo[39m]: GET /wallets/1 | 1 record(s) sent | 1 ms
+[2025-11-09 23:19:37] [[32minfo[39m]: GET /categories | 5 record(s) sent | 2 ms
+[2025-11-09 23:19:37] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 3 ms
+[2025-11-09 23:19:37] [[32minfo[39m]: GET /transactions/1 | 3 record(s) sent | 1 ms
+[2025-11-09 23:19:43] [[32minfo[39m]: NO CONTEXT | 0 record(s) affected | 0 ms
+[2025-11-09 23:19:43] [[32minfo[39m]: NO CONTEXT | 1 record(s) affected | 1 ms
+[2025-11-09 23:19:43] [[32minfo[39m]: NO CONTEXT | 1 record(s) affected | 1 ms
+[2025-11-09 23:20:06] [[32minfo[39m]: NO CONTEXT | 0 record(s) affected | 0 ms
+[2025-11-09 23:20:06] [[32minfo[39m]: NO CONTEXT | 0 record(s) affected | 0 ms
+[2025-11-09 23:20:06] [[32minfo[39m]: NO CONTEXT | 0 record(s) affected | 0 ms
+[2025-11-09 23:20:10] [[32minfo[39m]: NO CONTEXT | 0 record(s) affected | 1 ms
+[2025-11-09 23:20:10] [[32minfo[39m]: NO CONTEXT | 0 record(s) affected | 1 ms
+[2025-11-09 23:20:10] [[32minfo[39m]: NO CONTEXT | 0 record(s) affected | 0 ms
+[2025-11-09 23:20:13] [[32minfo[39m]: NO CONTEXT | 0 record(s) affected | 0 ms
+[2025-11-09 23:20:13] [[32minfo[39m]: NO CONTEXT | 0 record(s) affected | 1 ms
+[2025-11-09 23:20:13] [[32minfo[39m]: NO CONTEXT | 0 record(s) affected | 0 ms
+[2025-11-09 23:20:27] [[32minfo[39m]: POST /users/login | 0 record(s) affected | 0 ms
+[2025-11-09 23:20:31] [[32minfo[39m]: POST /users/login | 1 record(s) affected | 1 ms
+[2025-11-09 23:20:31] [[32minfo[39m]: GET /wallets/1 | 1 record(s) sent | 1 ms
+[2025-11-09 23:20:31] [[32minfo[39m]: GET /categories | 5 record(s) sent | 1 ms
+[2025-11-09 23:20:31] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 0 ms
+[2025-11-09 23:20:31] [[32minfo[39m]: GET /transactions/1 | 3 record(s) sent | 0 ms
+[2025-11-09 23:20:50] [[32minfo[39m]: NO CONTEXT | 0 record(s) affected | 1 ms
+[2025-11-09 23:20:50] [[32minfo[39m]: NO CONTEXT | 1 record(s) affected | 1 ms
+[2025-11-09 23:20:50] [[32minfo[39m]: NO CONTEXT | 1 record(s) affected | 1 ms
+[2025-11-09 23:21:17] [[32minfo[39m]: Server listening on 3000
+[2025-11-09 23:21:37] [[32minfo[39m]: POST /users/login | 0 record(s) affected | 14 ms
+[2025-11-09 23:21:40] [[32minfo[39m]: POST /users/login | 1 record(s) affected | 1 ms
+[2025-11-09 23:21:40] [[32minfo[39m]: GET /wallets/1 | 1 record(s) sent | 1 ms
+[2025-11-09 23:21:40] [[32minfo[39m]: GET /categories | 5 record(s) sent | 1 ms
+[2025-11-09 23:21:40] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 0 ms
+[2025-11-09 23:21:40] [[32minfo[39m]: GET /transactions/1 | 3 record(s) sent | 1 ms
+[2025-11-09 23:21:45] [[32minfo[39m]: NO CONTEXT | 0 record(s) affected | 0 ms
+[2025-11-09 23:21:45] [[32minfo[39m]: NO CONTEXT | 1 record(s) affected | 2 ms
+[2025-11-09 23:21:45] [[32minfo[39m]: NO CONTEXT | 1 record(s) affected | 1 ms
+[2025-11-09 23:24:19] [[32minfo[39m]: Server listening on 3000
+[2025-11-09 23:24:31] [[32minfo[39m]: POST /users/login | 1 record(s) affected | 14 ms
+[2025-11-09 23:24:31] [[32minfo[39m]: GET /wallets/1 | 1 record(s) sent | 2 ms
+[2025-11-09 23:24:31] [[32minfo[39m]: GET /categories | 5 record(s) sent | 1 ms
+[2025-11-09 23:24:31] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 1 ms
+[2025-11-09 23:24:31] [[32minfo[39m]: GET /transactions/1 | 3 record(s) sent | 1 ms
+[2025-11-09 23:24:37] [[32minfo[39m]: NO CONTEXT | 0 record(s) affected | 1 ms
+[2025-11-09 23:24:37] [[32minfo[39m]: NO CONTEXT | 1 record(s) affected | 2 ms
+[2025-11-09 23:24:37] [[32minfo[39m]: NO CONTEXT | 1 record(s) affected | 0 ms
+[2025-11-09 23:24:46] [[32minfo[39m]: NO CONTEXT | 1 record(s) affected | 0 ms

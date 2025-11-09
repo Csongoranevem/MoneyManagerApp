@@ -120,18 +120,35 @@ router.patch("/password/:id", (req, res) => {
 router.patch("/profile/:id", (req, res)=>{
     let ID = req.params.id 
     const { name,email} = req.body;
-    query(`UPDATE users SET name=?,email=? WHERE ID =?` ,[ name, email,ID], (error, results) =>{
-        if(error) return res.status(500).json({errno: error.errno, msg: "Hiba történt :("}) ;
-        if(error) return res.status(400).json({errno: error.errno, msg: "Hiba történt :("}) ;
+    
+    query(`SELECT * FROM users WHERE email = ? AND ID != ?`, [email, ID], (error, results) => {
+    if (error) {
+      console.error("[DB Error - email check]", error);
+      return res.status(500).json({ errno: error.errno, msg: "Adatbázis hiba az email ellenőrzésnél!" });
+    }
 
-         query(`SELECT * FROM users WHERE id=?` ,[ID], (error, results) =>{
-          if(error) return res.status(400).json({errno: error.errno, msg: "Hiba történt :("}) ;
-          
-          res.status(200).json(results[0]); 
-        },req);
-        
-    },req);
-})
+    if (results.length > 0) {
+      return res.status(400).json({ messsage: "Ez az e-mail cím már használatban van!" });
+    }
+    query(`UPDATE users SET name = ?, email = ? WHERE ID = ?`, [name, email, ID], (error2, updateResults) => {
+      if (error2) {
+        console.error("[DB Error - update]", error2);
+        return res.status(500).json({ errno: error2.errno, msg: "Nem sikerült frissíteni az adatokat!" });
+      }
+      query(`SELECT * FROM users WHERE ID = ?`, [ID], (error3, userResults) => {
+        if (error3) {
+          console.error("[DB Error - select updated user]", error3);
+          return res.status(500).json({ errno: error3.errno, msg: "Hiba a user lekérésekor!" });
+        }
+
+        if (userResults.length === 0) {
+          return res.status(404).json({ messsage: "Felhasználó nem található!" });
+        }
+        res.status(200).json(userResults[0])
+      });
+    });
+  });
+});
 
 //user törlése id alapján
 router.delete("/:id", (req, res)=>{
