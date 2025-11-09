@@ -27,7 +27,6 @@ export class CategoriesComponent implements OnInit {
   }
 
   addCategory(): void { 
-    // implement adding a new category
   }
 
   editCategory(categoryID: number): void {
