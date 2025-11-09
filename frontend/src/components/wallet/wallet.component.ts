@@ -14,13 +14,13 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./wallet.component.css']
 })
 export class WalletComponent implements OnInit {
+  isEditing: boolean = false;
 
-
-  ngOnInit(): void {
-    this.getWalletTransactions();
-    this.getWallets();
-    this.getWalletBalance();
-    this.getAllCategories();
+  async ngOnInit(): Promise<void> {
+    await this.getWallets();
+    await this.getAllCategories();
+    await this.getWalletBalance();
+    await this.getWalletTransactions();
   }
 
 
@@ -42,7 +42,6 @@ export class WalletComponent implements OnInit {
 
   constructor(private apiService: ApiService) {
     this.walletBalance = 0;
-    this.getWalletBalance();
   }
 
   async getWallets() {
@@ -54,15 +53,17 @@ export class WalletComponent implements OnInit {
   async getWalletBalance() {
 
     const response = await this.apiService.select('wallets/balance', this.userId);
-    this.walletID = response.data[0].walletID;
-    this.walletBalance = response.data[0].totalBalance;
+    const info = (response.data && response.data[0]) ? response.data[0] : null;
+    if (info) {
+      this.walletID = Number(info.walletID ?? info.walletId ?? this.walletID);
+      this.walletBalance = Number(info.totalBalance ?? info.total_balance ?? 0);
+    }
     console.log(this.walletBalance);
   }
 
   async getWalletTransactions() {
     const response = await this.apiService.select('transactions', this.walletID);
     const raw: any[] = response.data || [];
-    // normalize items and always replace the array so Angular change detection picks it up
     this.walletTransactions = raw.map(r => ({
       ...r,
       ID: r.ID ?? r.id ?? r.Id,
@@ -81,14 +82,12 @@ export class WalletComponent implements OnInit {
   }
 
   async addTransaction(): Promise<void> {
-    // ensure wallet and numeric fields are set correctly
     this.newTransaction.walletID = this.walletID;
     this.newTransaction.categoryID = Number(this.newTransaction.categoryID);
 
     console.log('Adding transaction', this.newTransaction);
     const response = await this.apiService.postNew('transactions', this.newTransaction);
     if (response.status === 200) {
-      // re-fetch transactions and balance to ensure UI and aggregates are correct
       await this.getWalletTransactions();
       await this.getWalletBalance();
 
@@ -100,7 +99,6 @@ export class WalletComponent implements OnInit {
         type: 'kiadás'
       };
 
-      // try to close bootstrap modal if available
       try {
         // @ts-ignore
         const modalEl = document.getElementById('exampleModal');
@@ -115,8 +113,6 @@ export class WalletComponent implements OnInit {
 
   getCategoryName(categoryID: number): string {
     const category = this.categories?.find(cat => cat.id === categoryID);
-    // debug: if categories exist but id mismatch (DB returns ID) normalize in getAllCategories
-    // console.log('lookup', categoryID, this.categories);
     return category ? category.name : 'Ismeretlen';
 
 
@@ -124,7 +120,6 @@ export class WalletComponent implements OnInit {
 
   getAllCategories(): void {
     this.apiService.selectAll('categories').then(response => {
-      // normalize database column names to { id, name }
       try {
         const raw: any[] = response.data || [];
         const normalized = raw.map(c => ({
@@ -139,20 +134,59 @@ export class WalletComponent implements OnInit {
   }
 
 
-  editTransaction(transactionID: number): void {
-    // implement editing a transaction
+  modalOpen(): void {
+    try {
+      // @ts-ignore
+      const modalEl = document.getElementById('exampleModal');
+      // @ts-ignore
+      const bsModal = window.bootstrap?.Modal.getInstance(modalEl) || (modalEl ? new window.bootstrap.Modal(modalEl) : null);
+      bsModal?.show();
+    } catch (e) { /* ignore if bootstrap not present */ }
+  }
+
+  async editTransaction(transactionID: number): Promise<void> {
+
+
+    this.apiService.select(`transactions/${this.walletID}`, transactionID).then(response => {
+      const transaction = response.data && response.data[0] ? response.data[0] : null;
+      this.newTransaction = {
+        walletID: transaction.walletID,
+        amount: transaction.amount,
+        categoryID: transaction.categoryID,
+        type: transaction.type
+      };
+      this.isEditing = true;
+      this.modalOpen();
+    });
+
+  }
+
+  async updateTransaction(transactionID: number): Promise<void> {
+    const response = await this.apiService.update('transactions', transactionID, this.newTransaction);
+    
+    const transaction = response.data
+    if (transaction) {
+      await this.getWalletTransactions();
+      await this.getWalletBalance();
+    }
   }
 
   async deleteTransaction(transactionID: number): Promise<void> {
     const response = await this.apiService.delete('transactions', transactionID);
     if (response.status === 200) {
-      // re-fetch transactions and update balance
       await this.getWalletTransactions();
       await this.getWalletBalance();
     } else {
       console.error('Failed to delete transaction', response);
     }
-    
+
+  }
+
+  // pénztárca kiválasztása
+  async selectWallet(walletID: number): Promise<void> {
+    this.walletID = Number(walletID ?? this.walletID);
+    await this.getWalletTransactions();
+    await this.getWalletBalance();
   }
 
 }

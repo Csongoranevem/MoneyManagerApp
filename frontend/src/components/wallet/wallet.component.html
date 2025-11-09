@@ -43,7 +43,9 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Mégsem</button>
-                            <button type="button" class="btn btn-primary" (click)="addTransaction();" data-bs-dismiss='modal'>Változtatások mentése</button>
+                            <button type="button" class="btn btn-primary" (click)="isEditing ? updateTransaction(newTransaction.ID!) : addTransaction()" data-bs-dismiss='modal'>{{isEditing ? 'Mentés' : 'Hozzáadás'}}</button>
+                            <button type="button" class="btn btn-warning" (click)="editTransaction(newTransaction.ID!)" data-bs-dismiss='modal'>Szerkesztés</button>
+                            <button type="button" class="btn btn-danger" (click)="deleteTransaction(newTransaction.ID!)" data-bs-dismiss='modal'>Törlés</button>
                         </div>
                     </div>
                 </div>
@@ -82,7 +84,7 @@
             <h4>Saját pénztárcák:</h4>
             <hr>
             <div *ngFor="let wallet of wallets" class="d-flex flex-lg-row" id="wallets">
-                <a (click)="walletID = wallet.ID; ngOnInit()" class="wallet-link">{{ wallet.name }}</a>
+                <a (click)="selectWallet(wallet.ID)" class="wallet-link">{{ wallet.name }}</a>
             </div>
         </div>
     </div>
