@@ -1,55 +1,36 @@
+// load environment variables from .env (if present)
 require('dotenv').config();
 const logger = require('./logger');
+const mysql = require('mysql');
 
-var mysql = require('mysql');
-
-
-var pool = mysql.createPool({
-    connectionLimit: 10,
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'moneymanage'
-    /*
-    host: process.env.DBHOST,
-    user: process.env.DBUSER,
-    password: process.env.DBPASS,
-    database: process.env.DBNAME*/
+const pool = mysql.createPool({
+  connectionLimit: process.env.DB_CONNECTION_LIMIT ? Number(process.env.DB_CONNECTION_LIMIT) : 10,
+  host: process.env.DBHOST || 'localhost',
+  user: process.env.DBUSER || 'root',
+  password: process.env.DBPASS || '',
+  database: process.env.DBNAME || 'moneymanage'
 });
 
-function query(sql,params=[],callback, req=''){
-    const start = Date.now();
 
-    const context = req ? `${req.method} ${req.originalUrl}`: "NO Context"
-    const txt = req.method == 'GET' ? 'sent' : "affected";
-    pool.query(sql,params,(error, results)=>{
-        if(process.env.DEBUG ==1){
-            const duration = Date.now() - start
-            if(error){
-                logger.error(`[DB ERROR] ${error.message}`);
-            }else{
-                const count= Array.isArray(results)? results.length: results.affectedRows;
-                logger.info(`${context} - ${count} rekord(s) ${txt}. |${duration}ms`)
-            }
-            if(callback) callback(error,results);
-        }
-        
-    });
+
+function query(sql, params = [], callback, req) {
+
+  const start = Date.now();
+  pool.query(sql, params, (error, results) => {
+    const context = req ? `${req.method} ${req.originalUrl}` : 'NO CONTEXT';
+    const txt = req && req.method === 'GET' ? 'sent' : 'affected';
+
+    const debug = process.env.DEBUG === '1' || process.env.DEBUG === 1;
+    if (debug) {
+      if (error) {
+        logger.error('[DB Error]', error.message);
+      } else {
+        const count = Array.isArray(results) ? results.length : (results && results.affectedRows) || 0;
+        logger.info(`${context} | ${count} record(s) ${txt} | ${Date.now() - start} ms`);
+      }
+    }
+
+    if (callback) callback(error, results);
+  });
 }
-pool.on('acquire', function(connection){
-    console.log("Connection %d acquired", connection.threadId)
-
-})
-pool.on('connection', function(connection){
-    console.log("Connection %d established", connection.threadId)
-})
-
-pool.on('enqueue', function(connection){
-    console.log("Waiting for available connection slot", connection.threadId)
-})
-pool.on('release', function(connection){
-    console.log("Connection %d released", connection.threadId)
-})
-
-
-module.exports = {query};
+module.exports = { query };

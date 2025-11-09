@@ -456,3 +456,376 @@
 [2025-11-02 18:34:50] [[32minfo[39m]: POST /users - 1 rekord(s) affected. |3ms
 >>>>>>> 24acd0a33c59deb0bd975832c32e5d8f77bfd596
 [2025-11-02 19:32:01] [[32minfo[39m]: Server listening on 3000
+[2025-11-09 10:58:28] [[32minfo[39m]: Server listening on 3000
+[2025-11-09 10:58:50] [[32minfo[39m]: GET /wallets/1 - 2 rekord(s) sent. |44ms
+[2025-11-09 10:58:50] [[32minfo[39m]: GET /wallets/balance/1 - 1 rekord(s) sent. |77ms
+[2025-11-09 10:58:50] [[32minfo[39m]: GET /wallets/balance/1 - 1 rekord(s) sent. |53ms
+[2025-11-09 10:58:50] [[32minfo[39m]: GET /transactions/1 - 3 rekord(s) sent. |56ms
+[2025-11-09 10:58:52] [[32minfo[39m]: GET /categories - 15 rekord(s) sent. |4ms
+[2025-11-09 10:58:54] [[32minfo[39m]: GET /wallets/balance/1 - 1 rekord(s) sent. |2ms
+[2025-11-09 10:58:54] [[32minfo[39m]: GET /transactions/1 - 3 rekord(s) sent. |3ms
+[2025-11-09 10:58:54] [[32minfo[39m]: GET /wallets/1 - 2 rekord(s) sent. |5ms
+[2025-11-09 10:58:54] [[32minfo[39m]: GET /wallets/balance/1 - 1 rekord(s) sent. |4ms
+[2025-11-09 10:58:57] [[32minfo[39m]: GET /transactions/1 - 3 rekord(s) sent. |1ms
+[2025-11-09 10:58:58] [[32minfo[39m]: GET /transactions/1 - 3 rekord(s) sent. |2ms
+[2025-11-09 10:59:53] [[32minfo[39m]: GET /transactions/5 - 1 rekord(s) sent. |2ms
+[2025-11-09 10:59:53] [[32minfo[39m]: GET /wallets/1 - 2 rekord(s) sent. |3ms
+[2025-11-09 10:59:53] [[32minfo[39m]: GET /wallets/balance/5 - 1 rekord(s) sent. |4ms
+[2025-11-09 10:59:54] [[32minfo[39m]: GET /wallets/1 - 2 rekord(s) sent. |2ms
+[2025-11-09 10:59:54] [[32minfo[39m]: GET /transactions/1 - 3 rekord(s) sent. |2ms
+[2025-11-09 10:59:54] [[32minfo[39m]: GET /wallets/balance/1 - 1 rekord(s) sent. |3ms
+[2025-11-09 11:00:40] [[32minfo[39m]: GET /wallets/balance/1 - 1 rekord(s) sent. |0ms
+[2025-11-09 11:00:40] [[32minfo[39m]: GET /wallets/1 - 2 rekord(s) sent. |2ms
+[2025-11-09 11:00:40] [[32minfo[39m]: GET /transactions/1 - 3 rekord(s) sent. |1ms
+[2025-11-09 11:00:40] [[32minfo[39m]: GET /wallets/balance/1 - 1 rekord(s) sent. |2ms
+[2025-11-09 11:01:04] [[32minfo[39m]: GET /wallets/balance/1 - 1 rekord(s) sent. |2ms
+[2025-11-09 11:01:04] [[32minfo[39m]: GET /wallets/balance/1 - 1 rekord(s) sent. |2ms
+[2025-11-09 11:01:04] [[32minfo[39m]: GET /wallets/1 - 2 rekord(s) sent. |1ms
+[2025-11-09 11:01:04] [[32minfo[39m]: GET /transactions/1 - 3 rekord(s) sent. |2ms
+[2025-11-09 11:01:13] [[32minfo[39m]: GET /wallets/balance/1 - 1 rekord(s) sent. |5ms
+[2025-11-09 11:01:13] [[32minfo[39m]: GET /wallets/1 - 2 rekord(s) sent. |6ms
+[2025-11-09 11:01:13] [[32minfo[39m]: GET /transactions/1 - 3 rekord(s) sent. |7ms
+[2025-11-09 11:01:13] [[32minfo[39m]: GET /wallets/balance/1 - 1 rekord(s) sent. |10ms
+[2025-11-09 11:01:16] [[32minfo[39m]: GET /wallets/balance/1 - 1 rekord(s) sent. |2ms
+[2025-11-09 11:01:16] [[32minfo[39m]: GET /transactions/1 - 3 rekord(s) sent. |1ms
+[2025-11-09 11:01:16] [[32minfo[39m]: GET /wallets/1 - 2 rekord(s) sent. |2ms
+[2025-11-09 11:01:16] [[32minfo[39m]: GET /wallets/balance/1 - 1 rekord(s) sent. |4ms
+[2025-11-09 11:01:18] [[32minfo[39m]: GET /wallets/balance/1 - 1 rekord(s) sent. |3ms
+[2025-11-09 11:01:18] [[32minfo[39m]: GET /transactions/1 - 3 rekord(s) sent. |4ms
+[2025-11-09 11:01:18] [[32minfo[39m]: GET /wallets/1 - 2 rekord(s) sent. |4ms
+[2025-11-09 11:01:18] [[32minfo[39m]: GET /wallets/balance/1 - 1 rekord(s) sent. |5ms
+[2025-11-09 11:01:24] [[32minfo[39m]: GET /wallets/balance/1 - 1 rekord(s) sent. |2ms
+[2025-11-09 11:01:24] [[32minfo[39m]: GET /transactions/1 - 3 rekord(s) sent. |1ms
+[2025-11-09 11:01:24] [[32minfo[39m]: GET /wallets/balance/1 - 1 rekord(s) sent. |1ms
+[2025-11-09 11:01:24] [[32minfo[39m]: GET /wallets/1 - 2 rekord(s) sent. |4ms
+[2025-11-09 11:01:31] [[32minfo[39m]: GET /wallets/balance/1 - 1 rekord(s) sent. |2ms
+[2025-11-09 11:01:31] [[32minfo[39m]: GET /wallets/balance/1 - 1 rekord(s) sent. |3ms
+[2025-11-09 11:01:31] [[32minfo[39m]: GET /wallets/1 - 2 rekord(s) sent. |4ms
+[2025-11-09 11:01:31] [[32minfo[39m]: GET /transactions/1 - 3 rekord(s) sent. |5ms
+[2025-11-09 11:01:45] [[32minfo[39m]: GET /wallets/balance/1 - 1 rekord(s) sent. |2ms
+[2025-11-09 11:01:45] [[32minfo[39m]: GET /wallets/1 - 2 rekord(s) sent. |3ms
+[2025-11-09 11:01:45] [[32minfo[39m]: GET /transactions/1 - 3 rekord(s) sent. |3ms
+[2025-11-09 11:01:45] [[32minfo[39m]: GET /wallets/balance/1 - 1 rekord(s) sent. |2ms
+[2025-11-09 11:01:48] [[32minfo[39m]: GET /wallets/balance/1 - 1 rekord(s) sent. |1ms
+[2025-11-09 11:01:48] [[32minfo[39m]: GET /wallets/1 - 2 rekord(s) sent. |3ms
+[2025-11-09 11:01:48] [[32minfo[39m]: GET /transactions/1 - 3 rekord(s) sent. |5ms
+[2025-11-09 11:01:48] [[32minfo[39m]: GET /wallets/balance/1 - 1 rekord(s) sent. |2ms
+[2025-11-09 11:01:57] [[32minfo[39m]: GET /wallets/balance/1 - 1 rekord(s) sent. |3ms
+[2025-11-09 11:01:57] [[32minfo[39m]: GET /transactions/1 - 3 rekord(s) sent. |5ms
+[2025-11-09 11:01:57] [[32minfo[39m]: GET /wallets/balance/1 - 1 rekord(s) sent. |6ms
+[2025-11-09 11:01:57] [[32minfo[39m]: GET /wallets/1 - 2 rekord(s) sent. |8ms
+[2025-11-09 11:02:07] [[32minfo[39m]: GET /wallets/balance/1 - 1 rekord(s) sent. |3ms
+[2025-11-09 11:02:07] [[32minfo[39m]: GET /transactions/1 - 3 rekord(s) sent. |3ms
+[2025-11-09 11:02:07] [[32minfo[39m]: GET /wallets/1 - 2 rekord(s) sent. |4ms
+[2025-11-09 11:02:07] [[32minfo[39m]: GET /wallets/balance/1 - 1 rekord(s) sent. |2ms
+[2025-11-09 11:08:56] [[32minfo[39m]: GET /wallets/balance/1 - 1 rekord(s) sent. |1ms
+[2025-11-09 11:08:56] [[32minfo[39m]: GET /transactions/1 - 3 rekord(s) sent. |7ms
+[2025-11-09 11:08:56] [[32minfo[39m]: GET /wallets/1 - 2 rekord(s) sent. |8ms
+[2025-11-09 11:08:56] [[32minfo[39m]: GET /wallets/balance/1 - 1 rekord(s) sent. |9ms
+[2025-11-09 11:14:46] [[32minfo[39m]: GET /wallets/balance/1 - 1 rekord(s) sent. |3ms
+[2025-11-09 11:14:46] [[32minfo[39m]: GET /transactions/1 - 3 rekord(s) sent. |1ms
+[2025-11-09 11:14:46] [[32minfo[39m]: GET /wallets/balance/1 - 1 rekord(s) sent. |1ms
+[2025-11-09 11:14:46] [[32minfo[39m]: GET /wallets/1 - 2 rekord(s) sent. |2ms
+[2025-11-09 11:15:29] [[32minfo[39m]: POST /transactions - 1 rekord(s) affected. |3ms
+[2025-11-09 11:15:29] [[32minfo[39m]: GET /wallets/balance/undefined - 1 rekord(s) sent. |0ms
+[2025-11-09 11:15:40] [[32minfo[39m]: GET /wallets/balance/1 - 1 rekord(s) sent. |1ms
+[2025-11-09 11:15:40] [[32minfo[39m]: GET /transactions/1 - 4 rekord(s) sent. |3ms
+[2025-11-09 11:15:40] [[32minfo[39m]: GET /wallets/1 - 2 rekord(s) sent. |4ms
+[2025-11-09 11:15:40] [[32minfo[39m]: GET /wallets/balance/1 - 1 rekord(s) sent. |2ms
+[2025-11-09 11:15:58] [[32minfo[39m]: GET /transactions/5 - 1 rekord(s) sent. |2ms
+[2025-11-09 11:15:58] [[32minfo[39m]: GET /wallets/1 - 2 rekord(s) sent. |3ms
+[2025-11-09 11:15:58] [[32minfo[39m]: GET /wallets/balance/5 - 1 rekord(s) sent. |3ms
+[2025-11-09 11:15:59] [[32minfo[39m]: GET /transactions/1 - 4 rekord(s) sent. |2ms
+[2025-11-09 11:15:59] [[32minfo[39m]: GET /wallets/1 - 2 rekord(s) sent. |2ms
+[2025-11-09 11:15:59] [[32minfo[39m]: GET /wallets/balance/1 - 1 rekord(s) sent. |3ms
+[2025-11-09 11:17:12] [[32minfo[39m]: Server listening on 3000
+[2025-11-09 11:18:11] [[32minfo[39m]: Server listening on 3000
+[2025-11-09 11:18:13] [[32minfo[39m]: Server listening on 3000
+[2025-11-09 11:18:18] [[32minfo[39m]: Server listening on 3000
+[2025-11-09 11:20:15] [[32minfo[39m]: Server listening on undefined
+[2025-11-09 11:20:59] [[32minfo[39m]: Server listening on undefined
+[2025-11-09 11:21:20] [[32minfo[39m]: Server listening on undefined
+[2025-11-09 11:22:06] [[32minfo[39m]: Server listening on 3000
+[2025-11-09 11:22:14] [[32minfo[39m]: Server listening on 3000
+[2025-11-09 11:22:21] [[32minfo[39m]: Server listening on 3000
+[2025-11-09 11:22:23] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 29 ms
+[2025-11-09 11:22:23] [[32minfo[39m]: GET /transactions/1 | 4 record(s) sent | 14 ms
+[2025-11-09 11:22:23] [[32minfo[39m]: GET /wallets/1 | 2 record(s) sent | 15 ms
+[2025-11-09 11:22:23] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 16 ms
+[2025-11-09 11:23:24] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 2 ms
+[2025-11-09 11:23:24] [[32minfo[39m]: GET /transactions/1 | 4 record(s) sent | 1 ms
+[2025-11-09 11:23:24] [[32minfo[39m]: GET /wallets/1 | 2 record(s) sent | 2 ms
+[2025-11-09 11:23:24] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 3 ms
+[2025-11-09 11:24:09] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 2 ms
+[2025-11-09 11:24:09] [[32minfo[39m]: GET /transactions/1 | 4 record(s) sent | 3 ms
+[2025-11-09 11:24:09] [[32minfo[39m]: GET /wallets/1 | 2 record(s) sent | 3 ms
+[2025-11-09 11:24:09] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 2 ms
+[2025-11-09 11:24:20] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 1 ms
+[2025-11-09 11:24:20] [[32minfo[39m]: GET /transactions/1 | 4 record(s) sent | 5 ms
+[2025-11-09 11:24:20] [[32minfo[39m]: GET /wallets/1 | 2 record(s) sent | 7 ms
+[2025-11-09 11:24:20] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 8 ms
+[2025-11-09 11:24:24] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 3 ms
+[2025-11-09 11:24:24] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 2 ms
+[2025-11-09 11:24:24] [[32minfo[39m]: GET /wallets/1 | 2 record(s) sent | 4 ms
+[2025-11-09 11:24:24] [[32minfo[39m]: GET /transactions/1 | 4 record(s) sent | 4 ms
+[2025-11-09 11:25:40] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 1 ms
+[2025-11-09 11:25:41] [[32minfo[39m]: GET /transactions/1 | 4 record(s) sent | 0 ms
+[2025-11-09 11:25:41] [[32minfo[39m]: GET /wallets/1 | 2 record(s) sent | 3 ms
+[2025-11-09 11:25:41] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 2 ms
+[2025-11-09 11:25:47] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 1 ms
+[2025-11-09 11:25:47] [[32minfo[39m]: GET /wallets/1 | 2 record(s) sent | 2 ms
+[2025-11-09 11:25:47] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 1 ms
+[2025-11-09 11:25:47] [[32minfo[39m]: GET /transactions/1 | 4 record(s) sent | 5 ms
+[2025-11-09 11:25:51] [[32minfo[39m]: GET /wallets/1 | 2 record(s) sent | 1 ms
+[2025-11-09 11:25:51] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 2 ms
+[2025-11-09 11:25:51] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 4 ms
+[2025-11-09 11:25:51] [[32minfo[39m]: GET /transactions/1 | 4 record(s) sent | 5 ms
+[2025-11-09 11:26:25] [[32minfo[39m]: Server listening on 3000
+[2025-11-09 11:26:28] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 32 ms
+[2025-11-09 11:26:28] [[32minfo[39m]: GET /transactions/1 | 4 record(s) sent | 14 ms
+[2025-11-09 11:26:28] [[32minfo[39m]: GET /wallets/1 | 2 record(s) sent | 15 ms
+[2025-11-09 11:26:28] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 15 ms
+[2025-11-09 11:26:28] [[32minfo[39m]: GET /categories/1 | 1 record(s) sent | 18 ms
+[2025-11-09 11:26:52] [[32minfo[39m]: Server listening on 3000
+[2025-11-09 11:26:59] [[32minfo[39m]: GET /transactions/1 | 4 record(s) sent | 11 ms
+[2025-11-09 11:26:59] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 16 ms
+[2025-11-09 11:26:59] [[32minfo[39m]: GET /wallets/1 | 2 record(s) sent | 16 ms
+[2025-11-09 11:26:59] [[32minfo[39m]: GET /categories/1 | 1 record(s) sent | 17 ms
+[2025-11-09 11:26:59] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 43 ms
+[2025-11-09 11:27:12] [[32minfo[39m]: Server listening on 3000
+[2025-11-09 11:27:25] [[32minfo[39m]: Server listening on 3000
+[2025-11-09 11:27:35] [[32minfo[39m]: Server listening on 3000
+[2025-11-09 11:27:37] [[32minfo[39m]: GET /wallets/1 | 2 record(s) sent | 11 ms
+[2025-11-09 11:27:37] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 41 ms
+[2025-11-09 11:27:37] [[32minfo[39m]: GET /transactions/1 | 4 record(s) sent | 18 ms
+[2025-11-09 11:27:37] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 18 ms
+[2025-11-09 11:27:37] [[32minfo[39m]: GET /categories/1 | 1 record(s) sent | 19 ms
+[2025-11-09 11:27:52] [[32minfo[39m]: Server listening on 3000
+[2025-11-09 11:27:54] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 39 ms
+[2025-11-09 11:27:54] [[32minfo[39m]: GET /transactions/1 | 4 record(s) sent | 28 ms
+[2025-11-09 11:27:54] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 29 ms
+[2025-11-09 11:27:54] [[32minfo[39m]: GET /wallets/1 | 2 record(s) sent | 33 ms
+[2025-11-09 11:27:54] [[32minfo[39m]: GET /categories/1 | 1 record(s) sent | 32 ms
+[2025-11-09 11:28:05] [[32minfo[39m]: Server listening on 3000
+[2025-11-09 11:28:07] [[32minfo[39m]: GET /wallets/1 | 2 record(s) sent | 14 ms
+[2025-11-09 11:28:07] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 17 ms
+[2025-11-09 11:28:07] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 44 ms
+[2025-11-09 11:28:07] [[32minfo[39m]: GET /transactions/1 | 4 record(s) sent | 24 ms
+[2025-11-09 11:28:07] [[32minfo[39m]: GET /categories/1 | 1 record(s) sent | 22 ms
+[2025-11-09 11:29:20] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 2 ms
+[2025-11-09 11:29:20] [[32minfo[39m]: GET /wallets/1 | 2 record(s) sent | 2 ms
+[2025-11-09 11:29:20] [[32minfo[39m]: GET /transactions/1 | 4 record(s) sent | 3 ms
+[2025-11-09 11:29:20] [[32minfo[39m]: GET /categories | 15 record(s) sent | 3 ms
+[2025-11-09 11:29:20] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 4 ms
+[2025-11-09 11:29:42] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 1 ms
+[2025-11-09 11:29:42] [[32minfo[39m]: GET /transactions/1 | 4 record(s) sent | 1 ms
+[2025-11-09 11:29:42] [[32minfo[39m]: GET /wallets/1 | 2 record(s) sent | 2 ms
+[2025-11-09 11:29:42] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 2 ms
+[2025-11-09 11:29:42] [[32minfo[39m]: GET /categories | 15 record(s) sent | 3 ms
+[2025-11-09 11:29:45] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 1 ms
+[2025-11-09 11:29:45] [[32minfo[39m]: GET /transactions/1 | 4 record(s) sent | 1 ms
+[2025-11-09 11:29:45] [[32minfo[39m]: GET /wallets/1 | 2 record(s) sent | 1 ms
+[2025-11-09 11:29:45] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 2 ms
+[2025-11-09 11:29:45] [[32minfo[39m]: GET /categories | 15 record(s) sent | 4 ms
+[2025-11-09 11:30:01] [[32minfo[39m]: POST /transactions | 1 record(s) affected | 2 ms
+[2025-11-09 11:30:01] [[32minfo[39m]: GET /wallets/balance/undefined | 1 record(s) sent | 1 ms
+[2025-11-09 11:30:06] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 1 ms
+[2025-11-09 11:30:06] [[32minfo[39m]: GET /transactions/1 | 5 record(s) sent | 1 ms
+[2025-11-09 11:30:06] [[32minfo[39m]: GET /wallets/1 | 2 record(s) sent | 3 ms
+[2025-11-09 11:30:06] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 2 ms
+[2025-11-09 11:30:06] [[32minfo[39m]: GET /categories | 15 record(s) sent | 1 ms
+[2025-11-09 11:30:08] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 1 ms
+[2025-11-09 11:30:08] [[32minfo[39m]: GET /transactions/1 | 5 record(s) sent | 0 ms
+[2025-11-09 11:30:08] [[32minfo[39m]: GET /wallets/1 | 2 record(s) sent | 1 ms
+[2025-11-09 11:30:08] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 2 ms
+[2025-11-09 11:30:08] [[32minfo[39m]: GET /categories | 15 record(s) sent | 2 ms
+[2025-11-09 11:30:09] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 3 ms
+[2025-11-09 11:30:09] [[32minfo[39m]: GET /transactions/1 | 5 record(s) sent | 4 ms
+[2025-11-09 11:30:09] [[32minfo[39m]: GET /wallets/1 | 2 record(s) sent | 4 ms
+[2025-11-09 11:30:09] [[32minfo[39m]: GET /categories | 15 record(s) sent | 4 ms
+[2025-11-09 11:30:09] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 5 ms
+[2025-11-09 11:30:49] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 1 ms
+[2025-11-09 11:30:49] [[32minfo[39m]: GET /transactions/1 | 5 record(s) sent | 1 ms
+[2025-11-09 11:30:49] [[32minfo[39m]: GET /wallets/1 | 2 record(s) sent | 2 ms
+[2025-11-09 11:30:49] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 1 ms
+[2025-11-09 11:30:49] [[32minfo[39m]: GET /categories | 15 record(s) sent | 0 ms
+[2025-11-09 11:30:52] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 3 ms
+[2025-11-09 11:30:52] [[32minfo[39m]: GET /transactions/1 | 5 record(s) sent | 3 ms
+[2025-11-09 11:30:52] [[32minfo[39m]: GET /categories | 15 record(s) sent | 2 ms
+[2025-11-09 11:30:52] [[32minfo[39m]: GET /wallets/1 | 2 record(s) sent | 2 ms
+[2025-11-09 11:30:52] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 3 ms
+[2025-11-09 11:31:47] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 0 ms
+[2025-11-09 11:31:47] [[32minfo[39m]: GET /transactions/1 | 5 record(s) sent | 0 ms
+[2025-11-09 11:31:47] [[32minfo[39m]: GET /wallets/1 | 2 record(s) sent | 1 ms
+[2025-11-09 11:31:47] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 1 ms
+[2025-11-09 11:31:47] [[32minfo[39m]: GET /categories | 15 record(s) sent | 0 ms
+[2025-11-09 11:32:08] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 0 ms
+[2025-11-09 11:32:08] [[32minfo[39m]: GET /transactions/1 | 5 record(s) sent | 1 ms
+[2025-11-09 11:32:08] [[32minfo[39m]: GET /wallets/1 | 2 record(s) sent | 1 ms
+[2025-11-09 11:32:08] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 0 ms
+[2025-11-09 11:32:08] [[32minfo[39m]: GET /categories | 15 record(s) sent | 0 ms
+[2025-11-09 11:32:19] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 1 ms
+[2025-11-09 11:32:19] [[32minfo[39m]: GET /transactions/1 | 5 record(s) sent | 1 ms
+[2025-11-09 11:32:19] [[32minfo[39m]: GET /wallets/1 | 2 record(s) sent | 1 ms
+[2025-11-09 11:32:19] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 2 ms
+[2025-11-09 11:32:19] [[32minfo[39m]: GET /categories | 15 record(s) sent | 3 ms
+[2025-11-09 11:32:31] [[31merror[39m]: [DB Error]
+[2025-11-09 11:32:31] [[32minfo[39m]: GET /wallets/balance/undefined | 1 record(s) sent | 0 ms
+[2025-11-09 11:33:23] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 1 ms
+[2025-11-09 11:33:23] [[32minfo[39m]: GET /transactions/1 | 5 record(s) sent | 2 ms
+[2025-11-09 11:33:23] [[32minfo[39m]: GET /wallets/1 | 2 record(s) sent | 2 ms
+[2025-11-09 11:33:23] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 1 ms
+[2025-11-09 11:33:23] [[32minfo[39m]: GET /categories | 15 record(s) sent | 2 ms
+[2025-11-09 11:33:26] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 1 ms
+[2025-11-09 11:33:26] [[32minfo[39m]: GET /transactions/1 | 5 record(s) sent | 1 ms
+[2025-11-09 11:33:26] [[32minfo[39m]: GET /wallets/1 | 2 record(s) sent | 3 ms
+[2025-11-09 11:33:26] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 1 ms
+[2025-11-09 11:33:26] [[32minfo[39m]: GET /categories | 15 record(s) sent | 2 ms
+[2025-11-09 11:33:39] [[31merror[39m]: [DB Error]
+[2025-11-09 11:33:39] [[32minfo[39m]: GET /wallets/balance/undefined | 1 record(s) sent | 1 ms
+[2025-11-09 11:33:56] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 1 ms
+[2025-11-09 11:33:56] [[32minfo[39m]: GET /transactions/1 | 5 record(s) sent | 1 ms
+[2025-11-09 11:33:56] [[32minfo[39m]: GET /wallets/1 | 2 record(s) sent | 2 ms
+[2025-11-09 11:33:56] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 2 ms
+[2025-11-09 11:33:56] [[32minfo[39m]: GET /categories | 15 record(s) sent | 5 ms
+[2025-11-09 11:34:08] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 0 ms
+[2025-11-09 11:34:08] [[32minfo[39m]: GET /transactions/1 | 5 record(s) sent | 1 ms
+[2025-11-09 11:34:08] [[32minfo[39m]: GET /wallets/1 | 2 record(s) sent | 5 ms
+[2025-11-09 11:34:08] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 5 ms
+[2025-11-09 11:34:08] [[32minfo[39m]: GET /categories | 15 record(s) sent | 5 ms
+[2025-11-09 11:34:10] [[32minfo[39m]: GET /transactions/1 | 5 record(s) sent | 1 ms
+[2025-11-09 11:34:10] [[32minfo[39m]: GET /wallets/1 | 2 record(s) sent | 2 ms
+[2025-11-09 11:34:10] [[32minfo[39m]: GET /categories | 15 record(s) sent | 1 ms
+[2025-11-09 11:34:10] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 3 ms
+[2025-11-09 11:34:11] [[32minfo[39m]: GET /transactions/5 | 1 record(s) sent | 1 ms
+[2025-11-09 11:34:11] [[32minfo[39m]: GET /wallets/1 | 2 record(s) sent | 2 ms
+[2025-11-09 11:34:11] [[32minfo[39m]: GET /wallets/balance/5 | 1 record(s) sent | 4 ms
+[2025-11-09 11:34:11] [[32minfo[39m]: GET /categories | 15 record(s) sent | 6 ms
+[2025-11-09 11:34:12] [[32minfo[39m]: GET /transactions/1 | 5 record(s) sent | 1 ms
+[2025-11-09 11:34:12] [[32minfo[39m]: GET /wallets/1 | 2 record(s) sent | 1 ms
+[2025-11-09 11:34:12] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 0 ms
+[2025-11-09 11:34:12] [[32minfo[39m]: GET /categories | 15 record(s) sent | 1 ms
+[2025-11-09 11:34:37] [[31merror[39m]: [DB Error]
+[2025-11-09 11:34:37] [[32minfo[39m]: GET /wallets/balance/undefined | 1 record(s) sent | 0 ms
+[2025-11-09 11:34:41] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 1 ms
+[2025-11-09 11:34:41] [[32minfo[39m]: GET /transactions/1 | 5 record(s) sent | 0 ms
+[2025-11-09 11:34:41] [[32minfo[39m]: GET /wallets/1 | 2 record(s) sent | 3 ms
+[2025-11-09 11:34:41] [[32minfo[39m]: GET /categories | 15 record(s) sent | 2 ms
+[2025-11-09 11:34:41] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 4 ms
+[2025-11-09 11:36:38] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 1 ms
+[2025-11-09 11:36:38] [[32minfo[39m]: GET /transactions/1 | 5 record(s) sent | 0 ms
+[2025-11-09 11:36:38] [[32minfo[39m]: GET /wallets/1 | 2 record(s) sent | 1 ms
+[2025-11-09 11:36:38] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 1 ms
+[2025-11-09 11:36:38] [[32minfo[39m]: GET /categories | 15 record(s) sent | 1 ms
+[2025-11-09 11:38:10] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 0 ms
+[2025-11-09 11:38:10] [[32minfo[39m]: GET /transactions/1 | 5 record(s) sent | 1 ms
+[2025-11-09 11:38:10] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 2 ms
+[2025-11-09 11:38:10] [[32minfo[39m]: GET /categories | 15 record(s) sent | 1 ms
+[2025-11-09 11:38:10] [[32minfo[39m]: GET /wallets/1 | 2 record(s) sent | 4 ms
+[2025-11-09 11:38:13] [[32minfo[39m]: DELETE /transactions/13 | 1 record(s) affected | 2 ms
+[2025-11-09 11:38:13] [[32minfo[39m]: GET /transactions/undefined | 0 record(s) sent | 1 ms
+[2025-11-09 11:38:13] [[32minfo[39m]: GET /wallets/balance/undefined | 1 record(s) sent | 2 ms
+[2025-11-09 11:38:13] [[32minfo[39m]: GET /categories | 15 record(s) sent | 2 ms
+[2025-11-09 11:38:13] [[32minfo[39m]: GET /wallets/1 | 2 record(s) sent | 7 ms
+[2025-11-09 11:38:15] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 1 ms
+[2025-11-09 11:38:15] [[32minfo[39m]: GET /transactions/1 | 4 record(s) sent | 1 ms
+[2025-11-09 11:38:15] [[32minfo[39m]: GET /wallets/1 | 2 record(s) sent | 1 ms
+[2025-11-09 11:38:15] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 2 ms
+[2025-11-09 11:38:15] [[32minfo[39m]: GET /categories | 15 record(s) sent | 2 ms
+[2025-11-09 11:38:17] [[32minfo[39m]: DELETE /transactions/12 | 1 record(s) affected | 2 ms
+[2025-11-09 11:38:17] [[32minfo[39m]: GET /transactions/undefined | 0 record(s) sent | 1 ms
+[2025-11-09 11:38:17] [[32minfo[39m]: GET /wallets/1 | 2 record(s) sent | 1 ms
+[2025-11-09 11:38:17] [[32minfo[39m]: GET /wallets/balance/undefined | 1 record(s) sent | 1 ms
+[2025-11-09 11:38:17] [[32minfo[39m]: GET /categories | 15 record(s) sent | 2 ms
+[2025-11-09 11:38:19] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 0 ms
+[2025-11-09 11:38:19] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 4 ms
+[2025-11-09 11:38:19] [[32minfo[39m]: GET /transactions/1 | 3 record(s) sent | 9 ms
+[2025-11-09 11:38:19] [[32minfo[39m]: GET /categories | 15 record(s) sent | 7 ms
+[2025-11-09 11:38:19] [[32minfo[39m]: GET /wallets/1 | 2 record(s) sent | 14 ms
+[2025-11-09 11:38:20] [[32minfo[39m]: DELETE /transactions/4 | 1 record(s) affected | 2 ms
+[2025-11-09 11:38:20] [[32minfo[39m]: GET /transactions/undefined | 0 record(s) sent | 1 ms
+[2025-11-09 11:38:20] [[32minfo[39m]: GET /wallets/1 | 2 record(s) sent | 1 ms
+[2025-11-09 11:38:20] [[32minfo[39m]: GET /wallets/balance/undefined | 1 record(s) sent | 0 ms
+[2025-11-09 11:38:20] [[32minfo[39m]: GET /categories | 15 record(s) sent | 2 ms
+[2025-11-09 11:38:21] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 1 ms
+[2025-11-09 11:38:21] [[32minfo[39m]: GET /transactions/1 | 2 record(s) sent | 1 ms
+[2025-11-09 11:38:21] [[32minfo[39m]: GET /wallets/1 | 2 record(s) sent | 2 ms
+[2025-11-09 11:38:21] [[32minfo[39m]: GET /categories | 15 record(s) sent | 2 ms
+[2025-11-09 11:38:21] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 5 ms
+[2025-11-09 11:38:43] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 3 ms
+[2025-11-09 11:38:43] [[32minfo[39m]: GET /transactions/1 | 2 record(s) sent | 1 ms
+[2025-11-09 11:38:43] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 5 ms
+[2025-11-09 11:38:43] [[32minfo[39m]: GET /wallets/1 | 2 record(s) sent | 5 ms
+[2025-11-09 11:38:43] [[32minfo[39m]: GET /categories | 15 record(s) sent | 4 ms
+[2025-11-09 11:38:45] [[32minfo[39m]: DELETE /transactions/3 | 1 record(s) affected | 3 ms
+[2025-11-09 11:38:45] [[32minfo[39m]: GET /transactions/undefined | 0 record(s) sent | 1 ms
+[2025-11-09 11:38:45] [[32minfo[39m]: GET /wallets/1 | 2 record(s) sent | 1 ms
+[2025-11-09 11:38:45] [[32minfo[39m]: GET /categories | 15 record(s) sent | 1 ms
+[2025-11-09 11:38:45] [[32minfo[39m]: GET /wallets/balance/undefined | 1 record(s) sent | 4 ms
+[2025-11-09 11:38:46] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 1 ms
+[2025-11-09 11:38:46] [[32minfo[39m]: GET /transactions/1 | 1 record(s) sent | 2 ms
+[2025-11-09 11:38:46] [[32minfo[39m]: GET /wallets/1 | 2 record(s) sent | 2 ms
+[2025-11-09 11:38:46] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 2 ms
+[2025-11-09 11:38:46] [[32minfo[39m]: GET /categories | 15 record(s) sent | 1 ms
+[2025-11-09 11:47:54] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 1 ms
+[2025-11-09 11:47:54] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 1 ms
+[2025-11-09 11:47:54] [[32minfo[39m]: GET /transactions/1 | 13 record(s) sent | 1 ms
+[2025-11-09 11:47:54] [[32minfo[39m]: GET /wallets/1 | 2 record(s) sent | 2 ms
+[2025-11-09 11:47:54] [[32minfo[39m]: GET /categories | 15 record(s) sent | 1 ms
+[2025-11-09 11:47:59] [[32minfo[39m]: GET /wallets/1 | 2 record(s) sent | 2 ms
+[2025-11-09 11:47:59] [[32minfo[39m]: GET /transactions/5 | 5 record(s) sent | 2 ms
+[2025-11-09 11:47:59] [[32minfo[39m]: GET /wallets/balance/5 | 1 record(s) sent | 2 ms
+[2025-11-09 11:47:59] [[32minfo[39m]: GET /categories | 15 record(s) sent | 3 ms
+[2025-11-09 11:48:01] [[32minfo[39m]: GET /wallets/1 | 2 record(s) sent | 2 ms
+[2025-11-09 11:48:01] [[32minfo[39m]: GET /transactions/1 | 13 record(s) sent | 4 ms
+[2025-11-09 11:48:01] [[32minfo[39m]: GET /categories | 15 record(s) sent | 3 ms
+[2025-11-09 11:48:01] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 4 ms
+[2025-11-09 11:48:16] [[31merror[39m]: [DB Error]
+[2025-11-09 11:48:16] [[32minfo[39m]: GET /wallets/balance/undefined | 1 record(s) sent | 1 ms
+[2025-11-09 11:48:20] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 1 ms
+[2025-11-09 11:48:20] [[32minfo[39m]: GET /transactions/1 | 13 record(s) sent | 3 ms
+[2025-11-09 11:48:20] [[32minfo[39m]: GET /wallets/1 | 2 record(s) sent | 3 ms
+[2025-11-09 11:48:20] [[32minfo[39m]: GET /wallets/balance/1 | 1 record(s) sent | 3 ms
+[2025-11-09 11:48:20] [[32minfo[39m]: GET /categories | 15 record(s) sent | 4 ms
+[2025-11-09 11:48:30] [[31merror[39m]: [DB Error]
+[2025-11-09 11:48:30] [[32minfo[39m]: GET /wallets/balance/undefined | 1 record(s) sent | 1 ms
+[2025-11-09 11:50:53] [[32minfo[39m]: Server listening on 3000
+[2025-11-09 11:50:56] [[31merror[39m]: [DB Error]
+[2025-11-09 11:50:56] [[32minfo[39m]: GET /wallets/balance/undefined | 1 record(s) sent | 2 ms
+[2025-11-09 11:51:07] [[32minfo[39m]: Server listening on 3000
+[2025-11-09 11:51:08] [[31merror[39m]: [DB Error]
+[2025-11-09 11:51:08] [[32minfo[39m]: GET /wallets/balance/undefined | 1 record(s) sent | 2 ms
+[2025-11-09 11:51:11] [[31merror[39m]: [DB Error]
+[2025-11-09 11:51:11] [[32minfo[39m]: GET /wallets/balance/undefined | 1 record(s) sent | 0 ms
+[2025-11-09 11:52:31] [[32minfo[39m]: Server listening on 3000
+[2025-11-09 11:53:24] [[32minfo[39m]: Server listening on 3000
+[2025-11-09 11:54:26] [[32minfo[39m]: Server listening on 3000
+[2025-11-09 11:54:27] [[32minfo[39m]: Server listening on 3000
+[2025-11-09 11:54:33] [[31merror[39m]: [DB Error]
+[2025-11-09 11:54:33] [[32minfo[39m]: GET /wallets/balance/undefined | 1 record(s) sent | 9 ms
+[2025-11-09 11:55:24] [[32minfo[39m]: Server listening on 3000
+[2025-11-09 11:58:11] [[32minfo[39m]: Server listening on 3000
+[2025-11-09 11:58:13] [[32minfo[39m]: Server listening on 3000
+[2025-11-09 11:58:14] [[32minfo[39m]: GET /wallets/balance/undefined | 1 record(s) sent | 30 ms
+[2025-11-09 11:58:23] [[32minfo[39m]: Server listening on 3000
+[2025-11-09 11:58:30] [[32minfo[39m]: Server listening on 3000
+[2025-11-09 12:01:15] [[32minfo[39m]: Server listening on 3000
+[2025-11-09 12:01:16] [[31merror[39m]: [DB Error]
+[2025-11-09 12:01:16] [[32minfo[39m]: GET /wallets/balance/undefined | 1 record(s) sent | 1 ms
+[2025-11-09 12:01:38] [[32minfo[39m]: Server listening on 3000
+[2025-11-09 12:01:39] [[31merror[39m]: [DB Error]
+[2025-11-09 12:01:39] [[32minfo[39m]: GET /wallets/balance/undefined | 1 record(s) sent | 2 ms
+[2025-11-09 12:01:49] [[31merror[39m]: [DB Error]
+[2025-11-09 12:01:49] [[32minfo[39m]: GET /wallets/balance/undefined | 1 record(s) sent | 1 ms
+[2025-11-09 12:02:32] [[32minfo[39m]: Server listening on 3000
+[2025-11-09 12:02:35] [[31merror[39m]: [DB Error]
+[2025-11-09 12:02:35] [[32minfo[39m]: GET /wallets/balance/undefined | 1 record(s) sent | 2 ms
+[2025-11-09 12:08:17] [[32minfo[39m]: POST /transactions | 1 record(s) affected | 2 ms
+[2025-11-09 12:09:00] [[32minfo[39m]: Server listening on 3000
+[2025-11-09 12:09:08] [[32minfo[39m]: Server listening on 3000
+[2025-11-09 12:09:09] [[32minfo[39m]: Server listening on 3000
+[2025-11-09 12:09:13] [[32minfo[39m]: POST /transactions | 1 record(s) affected | 15 ms
+[2025-11-09 12:09:32] [[32minfo[39m]: Server listening on 3000
+[2025-11-09 12:09:34] [[32minfo[39m]: Server listening on 3000
+[2025-11-09 12:09:35] [[32minfo[39m]: POST /transactions | 1 record(s) affected | 16 ms
+[2025-11-09 12:09:37] [[32minfo[39m]: POST /transactions | 1 record(s) affected | 2 ms

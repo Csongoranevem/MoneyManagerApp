@@ -47,9 +47,10 @@ router.post("/", (req, res) => {
     query(`INSERT INTO transactions (walletID, amount, categoryID, type) VALUES (?,?,?,?)`,
         [walletID, amount, categoryID, type],
         (error, results) => {
-            if (error) return res.status(500).json({ errno: error.errno, msg: "Hiba történt :(" });
+            if (error) return res.status(400).json({ errno: error.errno, msg: "Hiba történt :(" });
 
-            res.status(200).json({ id: results.insertId, walletID, amount, categoryID, type });
+            console.log(results);
+            res.status(200).json("sikeres beszúrás");
         }, req);
 })
 

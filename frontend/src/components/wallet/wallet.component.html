@@ -6,7 +6,48 @@
             <button class="btn btn-primary mb-2" (click)="filter('kiadás')">Kiadás</button>
             <button class="btn btn-primary" (click)="filter('bevétel')">Bevétel</button>
             <button class="btn btn-warning mt-3" (click)="filter('összes')">Szűrés törlése</button>
-            <button class="btn btn-success mt-5 mb-3" (click)="addTransaction()">Hozzáadás</button>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-success mt-5 mb-2" data-bs-toggle="modal" data-bs-target="#exampleModal" >
+                Hozzáadás
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Új tranzakció hozzáadása</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="amount" class="form-label">Összeg (Ft):</label>
+                                    <input type="number" class="form-control" id="amount" [(ngModel)]="newTransaction.amount" name="amount">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="category" class="form-label">Kategória:</label>
+                                    <select class="form-select" id="category" [(ngModel)]="newTransaction.categoryID" name="category">
+                                        <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="type" class="form-label">Típus:</label>
+                                    <select class="form-select" id="type" [(ngModel)]="newTransaction.type" name="type">
+                                        <option value="kiadás">Kiadás</option>
+                                        <option value="bevétel">Bevétel</option>
+                                    </select>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Mégsem</button>
+                            <button type="button" class="btn btn-primary" (click)="addTransaction();" data-bs-dismiss='modal'>Változtatások mentése</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </div>

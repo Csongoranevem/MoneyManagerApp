@@ -3,5 +3,5 @@ export interface Transaction {
   walletID: number;
   amount: number;
   categoryID: number;
-  type: 'bevetel' | 'kiadas';
+  type: 'bevétel' | 'kiadás';
 }

@@ -1,0 +1,12 @@
+@url = http://localhost:3000
+
+### Create a new transaction
+POST {{url}}/transactions
+Content-Type: application/json
+
+{
+    "walletID": 1,
+    "amount": 1000,
+    "categoryID": 2,
+    "type": "kiadás"
+}

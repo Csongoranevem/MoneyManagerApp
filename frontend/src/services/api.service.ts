@@ -55,12 +55,14 @@ export class ApiService {
         { headers: { 'Content-Type': 'application/json' } })
       return {
         status: 200,
-        message: 'A rekord felvéve'
+        message: 'A rekord felvéve',
+        data: res.data
       }
     } catch (err) {
       return {
         status: 200,
-        message: 'Hiba a felvételben'
+        message: 'Hiba a felvételben',
+        data: err
       }
     }
   }
