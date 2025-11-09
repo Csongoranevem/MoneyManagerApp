@@ -48,6 +48,7 @@ export class NavbarComponent implements OnInit {
   }
 
   toggleTheme(): void {
+    
     // if currently dark -> switch to light, otherwise switch to dark
     const newTheme = this.isDark ? 'light' : 'dark';
     document.documentElement.setAttribute('data-bs-theme', newTheme);
@@ -62,8 +63,8 @@ export class NavbarComponent implements OnInit {
       ? [
           { name: 'Egyenleg', url: 'wallet', icon: '' },
           { name: 'Profilom', url: 'profile', icon: '' },
-          { name: 'Kilépés', url: 'logout', icon: '' },
           { name: 'Kategóriák', url: 'categories', icon: '' },
+          { name: 'Kilépés', url: 'logout', icon: '' },
         ]
       : [
           { name: 'Regisztráció', url: 'registration', icon: '' },

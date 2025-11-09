@@ -114,12 +114,14 @@ export class ApiService {
         { headers: { 'Content-Type': 'application/json' } })
       return {
         status: 200,
-        data: res.data
+        data: res.data,
+        message: 'Sikeres profil frissítés!',
       }
     } catch (err) {
       return {
         status: 400,
-        data: Messages('danger', 'Hiba!', 'Hiba történt a kategória törlésekor!')
+        data: err,
+        message:'Sikertelen profil frissítésekor!'
       }
     }
   }
