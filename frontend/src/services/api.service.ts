@@ -121,7 +121,7 @@ export class ApiService {
       return {
         status: 400,
         data: err,
-        message:'Sikertelen profil frissítésekor!'
+        message:'Sikertelen profil frissítés!'
       }
     }
   }

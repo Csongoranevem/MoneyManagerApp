@@ -52,6 +52,7 @@ export class ProfileComponent {
         }
         if(res.status===200){
           this.auth.login(JSON.stringify(res.data))
+          console.log(JSON.stringify(res.data))
           this.message.show('success','Ok', `${res.message}`)
         }
       })

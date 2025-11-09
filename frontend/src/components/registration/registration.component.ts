@@ -44,11 +44,14 @@ export class RegistrationComponent {
     }
     if(this.NewUser.password != this.confirmpassword){
       this.message.show('danger', 'Hiba', "Nem ugyanaz a kettő jelszó!")
-      return
+      return;
     }
     
     this.api.register('users',this.NewUser).then((res:Resp)=>{
-      alert(res.message)
+       if(res.status===400){
+        this.message.show('danger', 'Hiba',  `${res.message}`)
+        return
+      }
       this.NewUser ={
         
         name:"",
