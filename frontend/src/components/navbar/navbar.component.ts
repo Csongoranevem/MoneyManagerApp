@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { Navitem } from '../../interfaces/Navitems';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -11,6 +13,15 @@ import { CommonModule } from '@angular/common';
 })
 export class NavbarComponent implements OnInit {
   isDark = true;
+  navItems: Navitem[] = [];
+  isLoggedIn = false
+  loggedUserName=''
+
+  constructor(   
+    private auth: AuthService
+  ){
+  }
+
 
   ngOnInit(): void {
     try {
@@ -23,6 +34,17 @@ export class NavbarComponent implements OnInit {
     } catch (e) {
       // ignore
     }
+   
+    //Navbar menük
+     this.auth.Isloggedin$.subscribe(res=>{
+      this.isLoggedIn= res
+      if(this.isLoggedIn){
+        this.loggedUserName= this.auth.loggedUser().name
+      }
+      
+      this.setupMenu(res);
+    })
+    
   }
 
   toggleTheme(): void {
@@ -33,5 +55,20 @@ export class NavbarComponent implements OnInit {
     try { localStorage.setItem('theme', newTheme); } catch (e) { }
     this.isDark = !this.isDark;
   }
-
+  setupMenu(Isloggedin:boolean) {
+    
+    this.navItems = [
+    ...(Isloggedin
+      ? [
+          { name: 'Egyenleg', url: 'wallet', icon: '' },
+          { name: 'Profilom', url: 'profile', icon: '' },
+          { name: 'Kilépés', url: 'logout', icon: '' },
+          { name: 'Kategóriák', url: 'categories', icon: '' },
+        ]
+      : [
+          { name: 'Regisztráció', url: 'registration', icon: '' },
+          { name: 'Belépés', url: 'login', icon: '' },
+        ]),
+  ];
+  }
 }

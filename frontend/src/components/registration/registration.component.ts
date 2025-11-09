@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { ApiService } from '../../services/api.service';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { Users } from '../../interfaces/user';
 import { Resp } from '../../interfaces/response';
+import { AuthService } from '../../services/auth.service';
 
 
 @Component({
@@ -18,10 +19,12 @@ export class RegistrationComponent {
 
 
 
-  constructor(    
-    private api:ApiService
-    ){
-  }
+ constructor(    
+     private api:ApiService,
+     private router:Router,
+     private auth:AuthService
+     ){
+   }
   confirmpassword:string=""
   AllUsers:Users[]=[]
   NewUser:Users ={
@@ -32,8 +35,6 @@ export class RegistrationComponent {
     status:false,
     role:"user"
   }
-
-
   register(){
     if(this.NewUser.email == "" || this.NewUser.password =="" || this.NewUser.name =="" || this.confirmpassword ==""){
       alert("Kérem töltse ki a mezőket")
@@ -44,7 +45,7 @@ export class RegistrationComponent {
       return
     }
     
-    this.api.postNew('users',this.NewUser).then((res:Resp)=>{
+    this.api.register('users',this.NewUser).then((res:Resp)=>{
       alert(res.message)
       this.NewUser ={
         
@@ -55,7 +56,7 @@ export class RegistrationComponent {
         role:"user"
       }
       this.confirmpassword =""
-
+      this.router.navigate(['/login']);
     })
     
   

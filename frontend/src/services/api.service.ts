@@ -67,6 +67,46 @@ export class ApiService {
     }
   }
 
+  async login(table: string, data: any) {
+    try {
+      const res = await axios.post(
+        `${this.SERVER}/${table}`,
+        data, // api kérés
+        { headers: { 'Content-Type': 'application/json' } })
+      return {
+        status: 200,
+        message: 'Sikeres bejelentkezés',
+        data: res.data
+      }
+    } catch (err) {
+      return {
+        status: 200,
+        message: 'Hiba történt a bejelentkezésnél',
+        data: err
+      }
+    }
+  }
+
+  async register(table: string, data: any) {
+    try {
+      const res = await axios.post(
+        `${this.SERVER}/${table}`,
+        data, // api kérés
+        { headers: { 'Content-Type': 'application/json' } })
+      return {
+        status: 200,
+        message: 'Sikeres regisztráció',
+        data: res.data
+      }
+    } catch (err) {
+      return {
+        status: 200,
+        message: 'Hiba történt a regisztrációnál',
+        data: err
+      }
+    }
+  }
+
   async update(table: string, id: number, data: any) {
     try {
       const res = await axios.patch(
