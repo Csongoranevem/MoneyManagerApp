@@ -72,7 +72,7 @@ router.patch("/:id", (req, res)=>{
     let ID = req.params.id 
     const { name, password, email, status, role} = req.body;
     query(`UPDATE users SET name=?,password=?,email=?,status=?,role=? WHERE ID =?` ,[ name, password, email, status, role, ID], (error, results) =>{
-        if(error) return res.status(500).json({errno: error.errno, msg: "Hiba történt :("}) ;
+        if(error) return res.status(400).json({errno: error.errno, msg: "Hiba történt :("}) ;
       
         res.status(200).json(results)
     },req);
@@ -80,11 +80,20 @@ router.patch("/:id", (req, res)=>{
 //user jelszó frissítése id alapján
 router.patch("/password/:id", (req, res)=>{
     let ID = req.params.id 
-    const {password} = req.body;
-    query(`UPDATE users SET password=? WHERE ID =?` ,[  SHA1(password).toString(), ID], (error, results) =>{
+    const {oldpass,password} = req.body;
+    if(oldpass ==password){
+       return res.status(400).json({msg: "kettő jelszó nem lehet ugyanaz!"}) ;
+    }
+    query(`UPDATE users SET password=? WHERE ID =? AND password=?` ,[  SHA1(password).toString(), ID,SHA1(oldpass).toString()], (error, results) =>{
         if(error) return res.status(500).json({errno: error.errno, msg: "Hiba történt :("}) ;
-      
-        res.status(200).json(results)
+        
+        query(`SELECT * FROM users WHERE ID =? AND password=?` ,[ID,SHA1(password).toString()], (error, results) =>{
+          if(error) return res.status(400).json({errno: error.errno, msg: "Hiba történt :("}) ;
+          if (results.length === 0) {
+            return res.status(500).json({ msg: "Hibás jelszó!" });
+          }
+          res.status(200).json(results[0]); 
+        },req);
     },req);
 })
 //user név,email frissítése id alapján
@@ -93,8 +102,14 @@ router.patch("/profile/:id", (req, res)=>{
     const { name,email} = req.body;
     query(`UPDATE users SET name=?,email=? WHERE ID =?` ,[ name, email,ID], (error, results) =>{
         if(error) return res.status(500).json({errno: error.errno, msg: "Hiba történt :("}) ;
-      
-        res.status(200).json(results)
+        if(error) return res.status(400).json({errno: error.errno, msg: "Hiba történt :("}) ;
+
+         query(`SELECT * FROM users WHERE id=?` ,[ID], (error, results) =>{
+          if(error) return res.status(400).json({errno: error.errno, msg: "Hiba történt :("}) ;
+          
+          res.status(200).json(results[0]); 
+        },req);
+        
     },req);
 })
 

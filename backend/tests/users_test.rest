@@ -57,6 +57,7 @@ PATCH {{url}}/users/password/8
 Content-Type: application/json
 
 {
+    "oldpass":"1234",
     "password": "123"
 }
 
