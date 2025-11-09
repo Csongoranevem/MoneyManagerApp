@@ -78,24 +78,44 @@ router.patch("/:id", (req, res)=>{
     },req);
 })
 //user jelszó frissítése id alapján
-router.patch("/password/:id", (req, res)=>{
-    let ID = req.params.id 
-    const {oldpass,password} = req.body;
-    if(oldpass ==password){
-       return res.status(400).json({msg: "kettő jelszó nem lehet ugyanaz!"}) ;
-    }
-    query(`UPDATE users SET password=? WHERE ID =? AND password=?` ,[  SHA1(password).toString(), ID,SHA1(oldpass).toString()], (error, results) =>{
-        if(error) return res.status(500).json({errno: error.errno, msg: "Hiba történt :("}) ;
-        
-        query(`SELECT * FROM users WHERE ID =? AND password=?` ,[ID,SHA1(password).toString()], (error, results) =>{
-          if(error) return res.status(400).json({errno: error.errno, msg: "Hiba történt :("}) ;
-          if (results.length === 0) {
-            return res.status(500).json({ msg: "Hibás jelszó!" });
+router.patch("/password/:id", (req, res) => {
+  const ID = req.params.id;
+  const { oldpass, password } = req.body;
+  if (!oldpass || !password) {
+    return res.status(400).json({ msg: "Hiányzik a jelszó vagy az ID!" });
+  }
+  if (oldpass === password) {
+    return res.status(400).json({ msg: "A két jelszó nem lehet ugyanaz!" });
+  }
+  query(
+    `SELECT * FROM users WHERE ID = ? AND password = ?`,
+    [ID, SHA1(oldpass).toString()],
+    (error, results) => {
+      if (error) {
+        return res.status(400).json({ msg: "Hiba történt az ellenőrzés során!", error });
+      }
+      if (results.length === 0) {
+        return res.status(400).json({ msg: "Hibás régi jelszó!" });
+      }
+      query(
+        `UPDATE users SET password = ? WHERE ID = ?`,
+        [SHA1(password).toString(), ID],
+        (error2) => {
+          if (error2) {
+            return res.status(400).json({ msg: "Nem sikerült frissíteni a jelszót!", error2 });
           }
-          res.status(200).json(results[0]); 
-        },req);
-    },req);
-})
+          query(`SELECT * FROM users WHERE id=?` ,[ID], (error, results) =>{
+            if(error) return res.status(400).json({errno: error.errno, msg: "Hiba történt :("}) ;
+            
+            res.status(200).json(results[0]); 
+          },req);
+          
+        }
+      );
+    }
+  );
+});
+
 //user név,email frissítése id alapján
 router.patch("/profile/:id", (req, res)=>{
     let ID = req.params.id 
