@@ -29,7 +29,8 @@ export class ProfileComponent {
       email:"",
 
     }
-   
+    emailRegExp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    passwdRegExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
     oldpassword="";
     newpassword="";
     confirmpassword="";
@@ -45,11 +46,16 @@ export class ProfileComponent {
         this.message.show('danger', 'Hiba',  `Kérem töltsön ki minden mezőt!!`)
         return;
       }
+      if (!this.emailRegExp.test(this.User.email)) {
+      this.message.show('danger', 'Hiba', "Érvénytelen email formátum!");
+      return;
+    }
       this.api.profileupdate("users/profile", Number(this.User.ID), this.User).then((res:Resp)=>{
         if(res.status===400){
           this.message.show('danger', 'Hiba',  `${res.message}`)
           return
         }
+        
         if(res.status===200){
           this.auth.login(JSON.stringify(res.data))
           console.log(JSON.stringify(res.data))
@@ -64,6 +70,10 @@ export class ProfileComponent {
     };
     if(passwords.oldpass =="" || passwords.password=="" || this.confirmpassword==""){
       this.message.show('danger', 'Hiba',  `Kérem töltsön ki minden mezőt!!`)
+      return;
+    }
+     if (!this.passwdRegExp.test(this.User.password)) {
+      this.message.show('danger', 'Hiba', "A jelszónak legalább 8 karakterből kell állnia, tartalmaznia kell kis- és nagybetűt, valamint számot!");
       return;
     }
     if(passwords.oldpass ==passwords.password){
