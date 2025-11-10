@@ -133,7 +133,7 @@ export class WalletComponent implements OnInit {
     });
   }
 
-
+// bootstrap modal megnyitasa
   modalOpen(): void {
     try {
       // @ts-ignore
@@ -143,6 +143,8 @@ export class WalletComponent implements OnInit {
       bsModal?.show();
     } catch (e) { /* ignore if bootstrap not present */ }
   }
+
+// tranzakció szerkesztése
 
   async editTransaction(transactionID: number): Promise<void> {
 
@@ -161,6 +163,8 @@ export class WalletComponent implements OnInit {
 
   }
 
+// tranzakció frissítése
+
   async updateTransaction(transactionID: number): Promise<void> {
     const response = await this.apiService.update('transactions', transactionID, this.newTransaction);
     
@@ -171,7 +175,14 @@ export class WalletComponent implements OnInit {
     }
   }
 
+
+// tranzakció törlése
+
   async deleteTransaction(transactionID: number): Promise<void> {
+    let confirmDelete = confirm("Biztosan törölni szeretnéd a tranzakciót?");
+    if (!confirmDelete) {
+      return;
+    }
     const response = await this.apiService.delete('transactions', transactionID);
     if (response.status === 200) {
       await this.getWalletTransactions();
