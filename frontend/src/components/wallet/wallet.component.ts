@@ -5,6 +5,8 @@ import { CommonModule } from '@angular/common';
 import { Category } from '../../interfaces/categories';
 import { Wallet } from '../../interfaces/wallet';
 import { FormsModule } from '@angular/forms';
+import { MessageService } from '../../services/message.service';
+import * as bootstrap from 'bootstrap'
 
 @Component({
   selector: 'app-wallet',
@@ -40,7 +42,11 @@ export class WalletComponent implements OnInit {
     type: 'kiadás'
   };
 
-  constructor(private apiService: ApiService) {
+
+  constructor(
+    private apiService: ApiService,
+    private messageService: MessageService
+  ) {
     this.walletBalance = 0;
   }
 
@@ -51,14 +57,14 @@ export class WalletComponent implements OnInit {
   }
 
   async getWalletBalance() {
-
-    const response = await this.apiService.select('wallets/balance', this.userId);
+    const response = await this.apiService.select('wallets/balance', this.walletID);
     const info = (response.data && response.data[0]) ? response.data[0] : null;
     if (info) {
       this.walletID = Number(info.walletID ?? info.walletId ?? this.walletID);
-      this.walletBalance = Number(info.totalBalance ?? info.total_balance ?? 0);
+      this.walletBalance = Number(info.balance ?? info.balance ?? 0);
     }
     console.log(this.walletBalance);
+
   }
 
   async getWalletTransactions() {
@@ -81,41 +87,33 @@ export class WalletComponent implements OnInit {
     }
   }
 
-  async addTransaction(): Promise<void> {
-    this.newTransaction.walletID = this.walletID;
-    this.newTransaction.categoryID = Number(this.newTransaction.categoryID);
-
-    console.log('Adding transaction', this.newTransaction);
-    const response = await this.apiService.postNew('transactions', this.newTransaction);
-    if (response.status === 200) {
-      await this.getWalletTransactions();
-      await this.getWalletBalance();
-
-      // reset form model
-      this.newTransaction = {
-        walletID: this.walletID,
-        amount: 0,
-        categoryID: this.categoryID,
-        type: 'kiadás'
-      };
-
-      try {
-        // @ts-ignore
-        const modalEl = document.getElementById('exampleModal');
-        // @ts-ignore
-        const bsModal = window.bootstrap?.Modal.getInstance(modalEl) || (modalEl ? new window.bootstrap.Modal(modalEl) : null);
-        bsModal?.hide();
-      } catch (e) { /* ignore if bootstrap not present */ }
-    } else {
-      console.error('Failed to add transaction', response);
+  addTransaction(): void {
+    // Validate and normalize transaction data
+    const amount = Number(this.newTransaction.amount);
+    if (isNaN(amount) || amount <= 0) {
+      this.messageService.show('warning', 'Az összeg érvénytelen; a tranzakció hozzáadása megszakítva.', '');
+      return;
     }
-  }
-
-  getCategoryName(categoryID: number): string {
-    const category = this.categories?.find(cat => cat.id === categoryID);
-    return category ? category.name : 'Ismeretlen';
 
 
+
+    this.apiService.postNew('transactions', this.newTransaction).then(response => {
+      const addModalEl = document.getElementById('addModal');
+      if (addModalEl) {
+        const modal = bootstrap.Modal.getInstance(addModalEl) ?? new bootstrap.Modal(addModalEl);
+        modal?.hide();
+      }
+      this.getWalletTransactions();
+      this.getWalletBalance();
+    });
+
+
+    this.newTransaction = {
+      walletID: this.walletID,
+      amount: 0,
+      categoryID: 0,
+      type: 'kiadás'
+    };
   }
 
   getAllCategories(): void {
@@ -133,7 +131,12 @@ export class WalletComponent implements OnInit {
     });
   }
 
-// bootstrap modal megnyitasa
+  getCategoryName(categoryID: number): string {
+    const category = this.categories?.find(c => c.id === categoryID);
+    return category ? category.name : 'Ismeretlen';
+  }
+
+
   modalOpen(): void {
     try {
       // @ts-ignore
@@ -144,30 +147,39 @@ export class WalletComponent implements OnInit {
     } catch (e) { /* ignore if bootstrap not present */ }
   }
 
-// tranzakció szerkesztése
-
   async editTransaction(transactionID: number): Promise<void> {
+    // Validate and normalize transaction data
+    const amount = Number(this.newTransaction.amount);
+    if (isNaN(amount) || amount <= 0) {
+      this.messageService.show('warning', 'Az összeg érvénytelen; a tranzakció hozzáadása megszakítva.', '');
+      return;
+    }
 
 
-    this.apiService.select(`transactions/${this.walletID}`, transactionID).then(response => {
-      const transaction = response.data && response.data[0] ? response.data[0] : null;
-      this.newTransaction = {
-        walletID: transaction.walletID,
-        amount: transaction.amount,
-        categoryID: transaction.categoryID,
-        type: transaction.type
-      };
-      this.isEditing = true;
-      this.modalOpen();
+
+    this.apiService.update('transactions', transactionID, this.newTransaction).then(response => {
+      const addModalEl = document.getElementById('addModal');
+      if (addModalEl) {
+        const modal = bootstrap.Modal.getInstance(addModalEl) ?? new bootstrap.Modal(addModalEl);
+        modal?.hide();
+      }
+      this.getWalletTransactions();
+      this.getWalletBalance();
     });
+
+
+    this.newTransaction = {
+      walletID: this.walletID,
+      amount: 0,
+      categoryID: 0,
+      type: 'kiadás'
+    };
 
   }
 
-// tranzakció frissítése
-
   async updateTransaction(transactionID: number): Promise<void> {
     const response = await this.apiService.update('transactions', transactionID, this.newTransaction);
-    
+
     const transaction = response.data
     if (transaction) {
       await this.getWalletTransactions();
@@ -175,14 +187,7 @@ export class WalletComponent implements OnInit {
     }
   }
 
-
-// tranzakció törlése
-
   async deleteTransaction(transactionID: number): Promise<void> {
-    let confirmDelete = confirm("Biztosan törölni szeretnéd a tranzakciót?");
-    if (!confirmDelete) {
-      return;
-    }
     const response = await this.apiService.delete('transactions', transactionID);
     if (response.status === 200) {
       await this.getWalletTransactions();

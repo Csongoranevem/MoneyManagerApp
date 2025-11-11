@@ -1,6 +1,6 @@
 <div class="container mt-3">
     <h2>Kategóriák</h2>
-    <button class="btn btn-primary" (click)="addCategory()">Új kategória hozzáadása</button>
+    <button class="btn btn-primary" (click)="openAddModal()" data-bs-toggle="modal" data-bs-target="#newCategoryModal">Új kategória hozzáadása</button>
     <table class="table table-striped mt-3">
         <thead>
             <tr>
@@ -11,13 +11,59 @@
         </thead>
         <tbody>
             <tr *ngFor="let category of categories; let i = index">
-                <th scope="row">{{i + 1}}</th>
+                
+                <th scope="row">{{category.id}}</th>
                 <td>{{category.name}}</td>
                 <td>
-                    <button class="btn btn-danger btn-sm me-2" (click)="deleteCategory(category.id)"><i class="bi bi-x-lg"></i></button>
+                    <button class="btn btn-danger btn-sm me-2" data-bs-toggle="modal" data-bs-target="#deleteModal" (click)="openDeleteModal(category.id)"><i class="bi bi-x-lg"></i></button>
                     <button class="btn btn-warning btn-sm" (click)="editCategory(category.id)"><i class="bi bi-pencil"></i></button>
                 </td>
             </tr>
         </tbody>
     </table>
 </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="deleteModalLabel">Kategória törlése</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Biztosan törölni szeretnéd a kategóriát?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="deleteCategory(selectedCategoryId)">Törlés megerősítése</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- new category Modal -->
+<div class="modal fade" id="newCategoryModal" tabindex="-1" aria-labelledby="newCategoryModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="newCategoryModalLabel">Új kategória hozzáadása</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="addCategory()">
+          <div class="mb-3">
+            <label for="categoryName" class="form-label">Kategória neve</label>
+            <input type="text" class="form-control" id="categoryName" [(ngModel)]="newCategory.name" name="categoryName" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Hozzáadás</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+    
