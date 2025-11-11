@@ -85,7 +85,18 @@ export class CategoriesComponent implements OnInit {
   }
 
   editCategory(categoryID: number): void {
-    // implement editing a category
+    const category = this.categories.find(c => c.id === categoryID);
+    if (category) {
+      this.newCategory = { ...category };
+    }
+    this.apiService.update('categories', categoryID, { ...this.newCategory }).then(() => {
+      const addModalEl = document.getElementById('addModal');
+      if (addModalEl) {
+        const modal = (bootstrap as any).Modal.getInstance(addModalEl) ?? new (bootstrap as any).Modal(addModalEl);
+        modal?.hide();
+      }
+      this.getAllCategories();
+    });
   }
 
   deleteCategory(categoryID: number): void {

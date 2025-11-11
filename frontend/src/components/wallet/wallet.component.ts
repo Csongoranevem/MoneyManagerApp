@@ -42,6 +42,7 @@ export class WalletComponent implements OnInit {
     type: 'kiadás'
   };
 
+  selectedTransactionID: number = 0;
 
   constructor(
     private apiService: ApiService,
@@ -149,6 +150,7 @@ export class WalletComponent implements OnInit {
 
   async editTransaction(transactionID: number): Promise<void> {
     // Validate and normalize transaction data
+    this.newTransaction = this.walletTransactions.find(tx => tx.ID === transactionID) || this.newTransaction;
     const amount = Number(this.newTransaction.amount);
     if (isNaN(amount) || amount <= 0) {
       this.messageService.show('warning', 'Az összeg érvénytelen; a tranzakció hozzáadása megszakítva.', '');
@@ -157,7 +159,7 @@ export class WalletComponent implements OnInit {
 
 
 
-    this.apiService.update('transactions', transactionID, this.newTransaction).then(response => {
+    this.apiService.update('transactions', transactionID, { ...this.newTransaction }).then(response => {
       const addModalEl = document.getElementById('addModal');
       if (addModalEl) {
         const modal = bootstrap.Modal.getInstance(addModalEl) ?? new bootstrap.Modal(addModalEl);
@@ -177,23 +179,20 @@ export class WalletComponent implements OnInit {
 
   }
 
-  async updateTransaction(transactionID: number): Promise<void> {
-    const response = await this.apiService.update('transactions', transactionID, this.newTransaction);
-
-    const transaction = response.data
-    if (transaction) {
-      await this.getWalletTransactions();
-      await this.getWalletBalance();
-    }
-  }
-
   async deleteTransaction(transactionID: number): Promise<void> {
+
+
     const response = await this.apiService.delete('transactions', transactionID);
     if (response.status === 200) {
       await this.getWalletTransactions();
       await this.getWalletBalance();
     } else {
       console.error('Failed to delete transaction', response);
+    }
+    const deleteModalEl = document.getElementById('deleteModal');
+    if (deleteModalEl) {
+      const modal = (bootstrap as any).Modal.getInstance(deleteModalEl) ?? new (bootstrap as any).Modal(deleteModalEl);
+      modal?.hide();
     }
 
   }

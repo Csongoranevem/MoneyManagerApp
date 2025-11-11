@@ -7,12 +7,12 @@
             <button class="btn btn-primary" (click)="filter('bevétel')">Bevétel</button>
             <button class="btn btn-warning mt-3" (click)="filter('összes')">Szűrés törlése</button>
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-success mt-5 mb-2" data-bs-toggle="modal" data-bs-target="#exampleModal" >
+            <button type="button" class="btn btn-success mt-5 mb-2" data-bs-toggle="modal" data-bs-target="#addModal" >
                 Hozzáadás
             </button>
 
             <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -43,8 +43,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Mégsem</button>
-                            <button type="button" class="btn btn-primary" (click)="isEditing ? updateTransaction(newTransaction.ID!) : addTransaction()" data-bs-dismiss='modal'>{{isEditing ? 'Mentés' : 'Hozzáadás'}}</button>
-                            <button type="button" class="btn btn-warning" (click)="editTransaction(newTransaction.ID!)" data-bs-dismiss='modal'>Szerkesztés</button>
+                            <button type="button" class="btn btn-primary" (click)="isEditing ? editTransaction(newTransaction.ID!) : addTransaction()" data-bs-dismiss='modal'>{{isEditing ? 'Mentés' : 'Hozzáadás'}}</button>
                             <button type="button" class="btn btn-danger" (click)="deleteTransaction(newTransaction.ID!)" data-bs-dismiss='modal'>Törlés</button>
                         </div>
                     </div>
@@ -71,9 +70,9 @@
                     <td>{{getCategoryName(transaction.categoryID)}}</td>
                     <td>{{transaction.type}}</td>
                     <td>
-                        <button class="btn btn-danger btn-sm me-2" (click)="deleteTransaction(transaction.ID!)"><i
-                                class="bi bi-x-lg"></i></button>
-                        <button class="btn btn-warning btn-sm" (click)="editTransaction(transaction.ID!)"><i
+                        <button class="btn btn-danger btn-sm me-2" data-bs-toggle="modal" data-bs-target="#deleteModal" (click)="selectedTransactionID = transaction.ID!; isEditing = false"><i
+                                                class="bi bi-x-lg"></i></button>
+                        <button class="btn btn-warning btn-sm" (click)="editTransaction(transaction.ID!)" data-bs-toggle="modal" data-bs-target="#addModal" (click)="isEditing = true; newTransaction = transaction"><i
                                 class="bi bi-pencil"></i></button>
                     </td>
                 </tr>
@@ -88,3 +87,24 @@
             </div>
         </div>
     </div>
+
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="deleteModalLabel">Kategória törlése</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Biztosan törölni szeretnéd a kategóriát?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="deleteTransaction(selectedTransactionID)">Törlés megerősítése</button>
+      </div>
+    </div>
+  </div>
+</div>
