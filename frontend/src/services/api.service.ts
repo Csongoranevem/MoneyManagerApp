@@ -78,11 +78,11 @@ export class ApiService {
         message: 'Sikeres bejelentkezés',
         data: res.data
       }
-    } catch (err) {
+    } catch (err:any) {
       return {
         status: 400,
-        message: 'Hiba történt a bejelentkezésnél',
-        data: err
+        data: err,
+        message: err.response.data.error
       }
     }
   }
@@ -98,11 +98,11 @@ export class ApiService {
         message: 'Sikeres regisztráció',
         data: res.data
       }
-    } catch (err) {
+    } catch (err:any) {
       return {
         status: 400,
-        message: 'Hiba történt a regisztrációnál',
-        data: err
+        data: err,
+        message: err.response.data.error
       }
     }
   }
@@ -117,11 +117,11 @@ export class ApiService {
         data: res.data,
         message: 'Sikeres profil frissítés!',
       }
-    } catch (err) {
+    } catch (err:any) {
       return {
         status: 400,
         data: err,
-        message:'Sikertelen profil frissítés!'
+        message: err.response.data.error
       }
     }
   }

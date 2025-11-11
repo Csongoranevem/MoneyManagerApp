@@ -2011,3 +2011,42 @@
 [2025-11-11 22:43:04] [[32minfo[39m]: GET /categories | 11 record(s) sent | 2 ms
 [2025-11-11 22:43:04] [[32minfo[39m]: NO CONTEXT | 1 record(s) affected | 4 ms
 [2025-11-11 22:43:04] [[32minfo[39m]: GET /transactions/1 | 10 record(s) sent | 1 ms
+[2025-11-11 23:29:37] [[32minfo[39m]: Server listening on 3000
+[2025-11-11 23:36:17] [[32minfo[39m]: Server listening on 3000
+[2025-11-11 23:36:29] [[32minfo[39m]: Server listening on 3000
+[2025-11-11 23:36:40] [[32minfo[39m]: Server listening on 3000
+[2025-11-11 23:36:49] [[32minfo[39m]: NO CONTEXT | 1 record(s) affected | 41 ms
+[2025-11-11 23:38:17] [[32minfo[39m]: NO CONTEXT | 1 record(s) affected | 1 ms
+[2025-11-11 23:38:21] [[32minfo[39m]: NO CONTEXT | 1 record(s) affected | 1 ms
+[2025-11-11 23:38:44] [[32minfo[39m]: Server listening on 3000
+[2025-11-11 23:39:16] [[32minfo[39m]: Server listening on 3000
+[2025-11-11 23:39:52] [[32minfo[39m]: Server listening on 3000
+[2025-11-11 23:40:40] [[32minfo[39m]: Server listening on 3000
+[2025-11-11 23:40:50] [[32minfo[39m]: Server listening on 3000
+[2025-11-11 23:41:05] [[32minfo[39m]: Server listening on 3000
+[2025-11-11 23:41:15] [[32minfo[39m]: Server listening on 3000
+[2025-11-11 23:41:19] [[32minfo[39m]: Server listening on 3000
+[2025-11-11 23:41:25] [[32minfo[39m]: Server listening on 3000
+[2025-11-11 23:41:52] [[32minfo[39m]: Server listening on 3000
+[2025-11-11 23:41:58] [[32minfo[39m]: Server listening on 3000
+[2025-11-11 23:42:07] [[32minfo[39m]: Server listening on 3000
+[2025-11-11 23:42:31] [[32minfo[39m]: Server listening on 3000
+[2025-11-11 23:42:55] [[32minfo[39m]: Server listening on 3000
+[2025-11-11 23:43:21] [[32minfo[39m]: Server listening on 3000
+[2025-11-11 23:43:26] [[32minfo[39m]: Server listening on 3000
+[2025-11-11 23:43:54] [[32minfo[39m]: Server listening on 3000
+[2025-11-11 23:45:32] [[32minfo[39m]: POST /users | 1 record(s) affected | 14 ms
+[2025-11-11 23:45:37] [[32minfo[39m]: POST /users | 0 record(s) affected | 1 ms
+[2025-11-11 23:45:37] [[32minfo[39m]: POST /users | 1 record(s) affected | 2 ms
+[2025-11-11 23:45:45] [[32minfo[39m]: POST /users/login | 0 record(s) affected | 1 ms
+[2025-11-11 23:45:50] [[32minfo[39m]: POST /users/login | 1 record(s) affected | 1 ms
+[2025-11-11 23:45:50] [[32minfo[39m]: GET /wallets/1 | 1 record(s) sent | 4 ms
+[2025-11-11 23:45:50] [[32minfo[39m]: GET /categories | 5 record(s) sent | 2 ms
+[2025-11-11 23:45:50] [[32minfo[39m]: NO CONTEXT | 1 record(s) affected | 2 ms
+[2025-11-11 23:45:50] [[32minfo[39m]: GET /transactions/1 | 3 record(s) sent | 1 ms
+[2025-11-11 23:45:56] [[32minfo[39m]: NO CONTEXT | 1 record(s) affected | 1 ms
+[2025-11-11 23:47:59] [[32minfo[39m]: NO CONTEXT | 1 record(s) affected | 0 ms
+[2025-11-11 23:48:39] [[32minfo[39m]: NO CONTEXT | 0 record(s) affected | 0 ms
+[2025-11-11 23:48:43] [[32minfo[39m]: NO CONTEXT | 1 record(s) affected | 1 ms
+[2025-11-11 23:48:43] [[32minfo[39m]: NO CONTEXT | 1 record(s) affected | 1 ms
+[2025-11-11 23:48:43] [[32minfo[39m]: PATCH /users/password/25 | 1 record(s) affected | 1 ms
