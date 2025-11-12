@@ -63,7 +63,7 @@ export class CategoriesComponent implements OnInit {
 
 
   addCategory(): void {
-    // Validate and normalize name
+    // kategória hozzáadása
     const name = (this.newCategory.name || '').trim();
     if (!name) {
       this.messageService.show('warning', 'Kategória neve üres; a hozzáadás megszakítva.', '');
@@ -76,7 +76,7 @@ export class CategoriesComponent implements OnInit {
           const modal = (bootstrap as any).Modal.getInstance(addModalEl) ?? new (bootstrap as any).Modal(addModalEl);
           modal?.hide();
         }
-        // refresh list
+        // Frissítjük a kategória listát
         this.getAllCategories();
       })
       .catch(err => {
@@ -100,7 +100,7 @@ export class CategoriesComponent implements OnInit {
   }
 
   deleteCategory(categoryID: number): void {
-    //kategória törlése (meg kell kérdezni a felhasználót modal ablakban)
+    //kategória törlése
     this.apiService.delete('categories', categoryID).then(() => {
       //modal bezárása
       const deleteModalEl = document.getElementById('deleteModal');

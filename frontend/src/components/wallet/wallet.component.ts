@@ -17,6 +17,8 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./wallet.component.css']
 })
 export class WalletComponent implements OnInit {
+
+  // Szerkesztési mód
   isEditing: boolean = false;
 
   async ngOnInit(): Promise<void> {
@@ -26,6 +28,8 @@ export class WalletComponent implements OnInit {
     await this.getWalletTransactions();
   }
 
+  // A bejelentkezett felhasználó azonosítója
+  //szükséges változók a pénztárcák lekérdezéséhez
 
   userId: number = this.authService.getToken(); // login utan megkapja
   wallets: Wallet[] = [];
@@ -53,13 +57,14 @@ export class WalletComponent implements OnInit {
     this.walletBalance = 0;
   }
 
+  // pénztárcák lekérdezése
   async getWallets() {
     const response = await this.apiService.select('wallets', this.userId);
     this.wallets = response.data;
     console.log(this.userId);
 
   }
-
+  // pénztárca egyenleg lekérdezése
   async getWalletBalance() {
     const response = await this.apiService.select('transactions', this.walletID);
     const raw: any[] = response.data || [];
@@ -75,7 +80,7 @@ export class WalletComponent implements OnInit {
       return tx.type === 'bevétel' ? acc + tx.amount : acc - tx.amount;
     }, 0);
   }
-
+  // pénztárca tranzakciók lekérdezése
   async getWalletTransactions() {
     const response = await this.apiService.select('transactions', this.walletID);
     const raw: any[] = response.data || [];
@@ -87,7 +92,7 @@ export class WalletComponent implements OnInit {
       amount: Number(r.amount ?? 0)
     }));
   }
-
+  // tranzakciók szűrése típus szerint
   filter(type: string): void {
     if (type === 'összes') {
       this.getWalletTransactions();
@@ -95,7 +100,7 @@ export class WalletComponent implements OnInit {
       this.walletTransactions = this.walletTransactions.filter(tx => tx.type === type);
     }
   }
-
+  // új tranzakció hozzáadása
   addTransaction(): void {
     // Validate and normalize transaction data
     const amount = Number(this.newTransaction.amount);
@@ -105,7 +110,7 @@ export class WalletComponent implements OnInit {
     }
 
 
-
+    // hozzáadás API hívás
     this.apiService.postNew('transactions', this.newTransaction).then(response => {
       const addModalEl = document.getElementById('addModal');
       if (addModalEl) {
@@ -124,7 +129,7 @@ export class WalletComponent implements OnInit {
       type: 'kiadás'
     };
   }
-
+  // kategóriák lekérdezése
   getAllCategories(): void {
     this.apiService.selectAll('categories').then(response => {
       try {
@@ -139,13 +144,13 @@ export class WalletComponent implements OnInit {
       }
     });
   }
-
+  // kategória név lekérdezése ID alapján
   getCategoryName(categoryID: number): string {
     const category = this.categories?.find(c => c.id === categoryID);
     return category ? category.name : 'Ismeretlen';
   }
 
-
+  // modal megnyitása
   modalOpen(): void {
     try {
       // @ts-ignore
@@ -155,9 +160,9 @@ export class WalletComponent implements OnInit {
       bsModal?.show();
     } catch (e) { /* ignore if bootstrap not present */ }
   }
-
+  // tranzakció szerkesztése
   async editTransaction(transactionID: number): Promise<void> {
-    // Validate and normalize transaction data
+    // betöltjük a tranzakció adatait a modal ablakba
     this.newTransaction = this.walletTransactions.find(tx => tx.ID === transactionID) || this.newTransaction;
     const amount = Number(this.newTransaction.amount);
     if (isNaN(amount) || amount <= 0) {
@@ -166,7 +171,7 @@ export class WalletComponent implements OnInit {
     }
 
 
-
+    // frissítés API hívás
     this.apiService.update('transactions', transactionID, { ...this.newTransaction }).then(response => {
       const addModalEl = document.getElementById('addModal');
       if (addModalEl) {
@@ -186,7 +191,7 @@ export class WalletComponent implements OnInit {
     };
 
   }
-
+  // tranzakció törlése
   async deleteTransaction(transactionID: number): Promise<void> {
 
 
