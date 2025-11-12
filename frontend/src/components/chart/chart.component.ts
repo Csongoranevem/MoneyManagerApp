@@ -2,13 +2,11 @@ import { CommonModule } from '@angular/common';
 import { Component, ViewChild } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { BaseChartDirective, provideCharts, withDefaultRegisterables } from 'ng2-charts';
+import { MessageService } from '../../services/message.service';
 import { Users } from '../../interfaces/user';
 import { AuthService } from '../../services/auth.service';
-import { Wallet } from '../../interfaces/wallet';
-import { MessageService } from '../../services/message.service';
 
-
-// A táblád alapján készült interfész
+// Interface for wallet transactions
 interface WalletRecord {
   ID: number;
   walletID: number;
@@ -28,13 +26,19 @@ interface WalletRecord {
 export class ChartComponent {
   @ViewChild(BaseChartDirective) chart?: BaseChartDirective;
 
+  User:Users={
+    ID:0,
+    name: '',
+    password: '',
+    email: ''
+  }
+       
   labels: string[] = [];
   incomeData: number[] = [];
   expenseData: number[] = [];
   balanceData: number[] = [];
-
   wallets: WalletRecord[] = [];
-
+  
   public lineChartData: any = {
     labels: this.labels,
     datasets: []
@@ -83,57 +87,49 @@ export class ChartComponent {
     }
   };
 
+  constructor(
+    private api: ApiService,
+    private auth:AuthService,
+    private message: MessageService
+  ) {}
+
   async ngOnInit() {
+    
     await this.loadChartData();
     this.updateChartDatasets();
     setTimeout(() => this.chart?.update(), 0);
   }
 
   async loadChartData(): Promise<void> {
-    // 💾 Mock adatok a MySQL tábla alapján
-    this.wallets = [
-      { ID: 1, walletID: 3, amount: 74433, categoryID: 15, type: 'kiadás' },
-      { ID: 2, walletID: 1, amount: 30000, categoryID: 2, type: 'kiadás' },
-      { ID: 3, walletID: 3, amount: 8336, categoryID: 7, type: 'kiadás' },
-      { ID: 4, walletID: 1, amount: 70239, categoryID: 3, type: 'bevétel' },
-      { ID: 5, walletID: 3, amount: 24584, categoryID: 10, type: 'kiadás' },
-      { ID: 6, walletID: 3, amount: 20657, categoryID: 1, type: 'kiadás' },
-      { ID: 7, walletID: 3, amount: 25000, categoryID: 9, type: 'kiadás' },
-      { ID: 8, walletID: 3, amount: 50000, categoryID: 10, type: 'bevétel' },
-      { ID: 9, walletID: 4, amount: 10000, categoryID: 2, type: 'kiadás' },
-      { ID: 10, walletID: 4, amount: 40000, categoryID: 4, type: 'bevétel' },
-      { ID: 11, walletID: 5, amount: 4000, categoryID: 2, type: 'kiadás' },
-      { ID: 12, walletID: 3, amount: 66301, categoryID: 3, type: 'bevétel' },
-      { ID: 13, walletID: 3, amount: 66068, categoryID: 2, type: 'bevétel' },
-      { ID: 14, walletID: 2, amount: 75246, categoryID: 2, type: 'kiadás' },
-      { ID: 15, walletID: 3, amount: 58121, categoryID: 3, type: 'bevétel' },
-      { ID: 16, walletID: 2, amount: 11200, categoryID: 9, type: 'kiadás' },
-      { ID: 17, walletID: 3, amount: 67202, categoryID: 3, type: 'bevétel' },
-      { ID: 18, walletID: 5, amount: 27220, categoryID: 5, type: 'kiadás' },
-      { ID: 19, walletID: 3, amount: 31582, categoryID: 9, type: 'kiadás' },
-      { ID: 20, walletID: 2, amount: 20896, categoryID: 5, type: 'kiadás' },
-      { ID: 21, walletID: 3, amount: 12328, categoryID: 5, type: 'bevétel' }
-    ];
+    try {
+      this.User = await this.auth.loggedUser()
+      const res = await this.api.select('users/chart', this.User.ID!); //megfelelő adatok megszerzése
+      const response = res.data || [];
+      this.wallets = response as WalletRecord[];
 
-    // címkék: T1, T2, T3, stb.
-    this.labels = this.wallets.map((_, i) => `T${i + 1}`);
+      // X axis T1 t2
+      this.labels = this.wallets.map((_, i) => `T${i + 1}`);
 
-    this.incomeData = [];
-    this.expenseData = [];
-    this.balanceData = [];
+      this.incomeData = [];
+      this.expenseData = [];
+      this.balanceData = [];
 
-    let cumBalance = 0;
-    for (const tx of this.wallets) {
-      if (tx.type === 'bevétel') {
-        this.incomeData.push(tx.amount);
-        this.expenseData.push(0);
-        cumBalance += tx.amount;
-      } else {
-        this.expenseData.push(tx.amount);
-        this.incomeData.push(0);
-        cumBalance -= tx.amount;
+      let cumBalance = 0;
+      for (const tx of this.wallets) {
+        if (tx.type === 'bevétel') {
+          this.incomeData.push(tx.amount);
+          this.expenseData.push(0);
+          cumBalance += tx.amount;
+        } else {
+          this.expenseData.push(tx.amount);
+          this.incomeData.push(0);
+          cumBalance -= tx.amount;
+        }
+        this.balanceData.push(cumBalance);
       }
-      this.balanceData.push(cumBalance);
+
+    } catch (error) {
+     
     }
   }
 
@@ -160,9 +156,9 @@ export class ChartComponent {
           borderWidth: 2,
           tension: 0.3,
           pointRadius: 4
-        },
-       
+        }
       ]
     };
   }
+  
 }

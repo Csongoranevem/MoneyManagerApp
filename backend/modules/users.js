@@ -159,6 +159,21 @@ router.delete("/:id", (req, res)=>{
         res.status(200).json(results)
     },req);
 })
+//Charthoz való lekérés
+router.get("/chart/:id", (req, res)=>{
+    let id = req.params.id;
+    query(`SELECT transactions.ID, transactions.amount, transactions.type
+          FROM transactions
+          INNER JOIN wallets on transactions.walletID = wallets.ID
+          INNER JOIN users on users.ID = wallets.userID
+          WHERE users.ID = ?;` ,[id], (error, results) =>{
+        if(error) return res.status(500).send({ error:"Hiba fordult elő "}) ;
+      
+        res.status(200).json(results)
+    },req);
+})
+
+
 
 
 module.exports = router;

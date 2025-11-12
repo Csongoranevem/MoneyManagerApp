@@ -10,3 +10,7 @@ Content-Type: application/json
     "categoryID": 2,
     "type": "kiadás"
 }
+
+### Select one transaction
+GET {{url}}/transactions/3
+Content-Type: application/json

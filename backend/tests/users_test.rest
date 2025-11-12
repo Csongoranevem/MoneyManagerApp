@@ -70,4 +70,6 @@ Content-Type: application/json
     "email": "ember@gmail.com"
 }
 
-
+### Get chart data by userID
+GET {{url}}/users/chart/8
+Content-Type: application/json
