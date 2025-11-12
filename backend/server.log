@@ -2338,3 +2338,4 @@
 [2025-11-12 10:23:00] [[32minfo[39m]: GET /categories | 15 record(s) sent | 1 ms
 [2025-11-12 10:23:00] [[32minfo[39m]: NO CONTEXT | 1 record(s) affected | 1 ms
 [2025-11-12 10:23:00] [[32minfo[39m]: GET /transactions/1 | 15 record(s) sent | 0 ms
+[2025-11-12 15:45:59] [[32minfo[39m]: Server listening on 3000

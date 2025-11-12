@@ -61,14 +61,19 @@ export class WalletComponent implements OnInit {
   }
 
   async getWalletBalance() {
-    const response = await this.apiService.select('wallets/balance', this.walletID);
-    const info = (response.data && response.data[0]) ? response.data[0] : null;
-    if (info) {
-      this.walletID = Number(info.walletID ?? info.walletId ?? this.walletID);
-      this.walletBalance = Number(info.balance ?? info.balance ?? 0);
-    }
-    console.log(this.walletBalance);
+    const response = await this.apiService.select('transactions', this.walletID);
+    const raw: any[] = response.data || [];
+    const transactions = raw.map(r => ({
+      ...r,
+      ID: r.ID ?? r.id ?? r.Id,
+      walletID: Number(r.walletID ?? r.walletId ?? this.walletID),
+      categoryID: Number(r.categoryID ?? r.categoryId ?? r.CategoryID ?? 0),
+      amount: Number(r.amount ?? 0)
+    }));
 
+    this.walletBalance = transactions.reduce((acc, tx) => {
+      return tx.type === 'bevétel' ? acc + tx.amount : acc - tx.amount;
+    }, 0);
   }
 
   async getWalletTransactions() {

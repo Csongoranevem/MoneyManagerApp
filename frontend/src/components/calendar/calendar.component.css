@@ -48,3 +48,15 @@ hr {
   font-size: 0.85rem;
 }
 
+
+full-calendar {
+  width: 100%;
+  height: 100%;
+
+}
+
+#calDiv {
+  justify-content: center;
+  overflow: hidden;
+  height: max-content;
+}
