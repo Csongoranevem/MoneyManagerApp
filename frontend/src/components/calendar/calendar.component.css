@@ -12,3 +12,37 @@
   border: solid black 2px;
    
 }
+.container {
+  margin-top: 3rem;
+  width: 50rem;
+  border-radius: 30px;
+  box-shadow: -17px 13px #1c1922b4;
+  border: solid black 2px;
+ 
+  padding: 1.5rem;
+}
+
+hr {
+  border-top: 2px solid #222;
+  width: 80%;
+  margin: 0 auto 1rem auto;
+}
+
+::ng-deep .fc {
+  font-family: 'Segoe UI', sans-serif;
+}
+
+::ng-deep .fc-daygrid-day-number {
+  font-weight: 600;
+}
+
+::ng-deep .fc-toolbar-title {
+  font-size: 1.4rem;
+}
+
+::ng-deep .fc-daygrid-event {
+  border: none;
+  border-radius: 6px;
+  padding: 2px 5px;
+  font-size: 0.85rem;
+}
