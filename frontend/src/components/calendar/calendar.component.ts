@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { Resp } from '../../interfaces/response';
+//import { FullCalendarModule } from '@fullcalendar/angular';
 
 
 interface WeatherEvent {
@@ -25,7 +26,7 @@ interface CalendarEvent {
 @Component({
   selector: 'app-calendar',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, /*FullCalendarModule*/],
   templateUrl: './calendar.component.html',
   styleUrl: './calendar.component.css'
 })
