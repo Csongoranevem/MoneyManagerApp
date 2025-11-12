@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FullCalendarModule } from '@fullcalendar/angular'; // ✅ EZ FONTOS
+import { FullCalendarModule } from '@fullcalendar/angular';
 import { CalendarOptions } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
@@ -20,7 +20,6 @@ interface CalendarEvent {
 @Component({
   selector: 'app-calendar',
   standalone: true,
-  // ⬇️ Fontos: a FullCalendarModule benne legyen az imports-ban!
   imports: [CommonModule, FullCalendarModule],
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.css'],
@@ -30,10 +29,12 @@ export class CalendarComponent {
   calendarOptions!: CalendarOptions;
 
   async ngOnInit() {
+    // Előbb lekérjük az adatokat, aztán inicializáljuk a naptárat
     await this.getCalendarData();
     this.initCalendar();
   }
 
+  // Szimulált API-hívás / lokális adatforrás
   async getCalendarData() {
     const data = [
       { date: '2025-11-01', type: 'bevétel', amount: 50000 },
@@ -57,10 +58,11 @@ export class CalendarComponent {
     }));
   }
 
+  // FullCalendar beállítások inicializálása
   initCalendar() {
     this.calendarOptions = {
       plugins: [dayGridPlugin, timeGridPlugin, multiMonthPlugin, interactionPlugin],
-      initialView: 'dayGridMonth',
+      initialView: 'dayGridMonth', // <- fontos, hogy ne üres string legyen
       locale: 'hu',
       height: 600,
       headerToolbar: {
@@ -70,11 +72,12 @@ export class CalendarComponent {
       },
       events: this.events,
       eventDisplay: 'block',
+
+      // Egyedi eseménymegjelenítés (színes ikonok)
       eventContent: (arg) => {
         const { type, amount } = arg.event.extendedProps;
         const color = type === 'bevétel' ? '#4CAF50' : '#F44336';
         const icon = type === 'bevétel' ? '💰' : '💸';
-
         const html = `
           <div style="color: ${color}; font-weight: 600;">
             ${icon} ${amount.toLocaleString('hu-HU')} Ft

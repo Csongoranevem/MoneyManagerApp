@@ -72,10 +72,11 @@ export class ProfileComponent {
       this.message.show('danger', 'Hiba',  `Kérem töltsön ki minden mezőt!!`)
       return;
     }
-     if (!this.passwdRegExp.test(this.User.password)) {
+    /**  if (!this.passwdRegExp.test(this.User.password)) {
       this.message.show('danger', 'Hiba', "A jelszónak legalább 8 karakterből kell állnia, tartalmaznia kell kis- és nagybetűt, valamint számot!");
       return;
-    }
+    }*/
+    
     if(passwords.oldpass ==passwords.password){
       this.message.show('danger', 'Hiba',  `A régi meg az új jelszó nem lehet ugyanaz`)
       return;
