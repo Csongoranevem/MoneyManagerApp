@@ -1,43 +1,68 @@
 import { CommonModule } from '@angular/common';
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { ApiService } from '../../services/api.service';
-import { BaseChartDirective, provideCharts, withDefaultRegisterables } from 'ng2-charts';
-import { Users } from '../../interfaces/user';
-import { AuthService } from '../../services/auth.service';
-import { Wallet } from '../../interfaces/wallet';
-import { MessageService } from '../../services/message.service';
+import { Chart, registerables } from 'chart.js';
+//import { BaseChartDirective } from 'ng2-charts';
 
 
-// A táblád alapján készült interfész
+//Chart.register(...registerables);
+
 interface WalletRecord {
-  ID: number;
-  walletID: number;
-  amount: number;
-  categoryID: number;
-  type: 'bevétel' | 'kiadás';
+  id: number;
+  date: string;      // ISO date string expected
+  amount: number;    // positive = bevétel, negative = kiadás
+  category?: string;
+  description?: string;
+  // add other fields as returned by your backend
 }
 
 @Component({
   selector: 'app-chart',
   standalone: true,
-  imports: [CommonModule, BaseChartDirective],
-  providers: [provideCharts(withDefaultRegisterables())],
+  imports: [CommonModule],
   templateUrl: './chart.component.html',
-  styleUrls: ['./chart.component.css']
+  styleUrl: './chart.component.css'
 })
 export class ChartComponent {
-  @ViewChild(BaseChartDirective) chart?: BaseChartDirective;
+  //@ViewChild(BaseChartDirective) chart?: BaseChartDirective;
 
+  userId!: number; // állítsd be a bejelentkezett user id-jét
   labels: string[] = [];
   incomeData: number[] = [];
   expenseData: number[] = [];
   balanceData: number[] = [];
+  rawRecords: WalletRecord[] = [];
 
-  wallets: WalletRecord[] = [];
-
+  // Chart.js options (ng2-charts kompatibilis)
   public lineChartData: any = {
     labels: this.labels,
-    datasets: []
+    datasets: [
+      {
+        label: 'Bevételek',
+        data: this.incomeData,
+        fill: false,
+        borderWidth: 2,
+        tension: 0.3,
+        pointRadius: 4
+      },
+      {
+        label: 'Kiadások',
+        data: this.expenseData,
+        fill: false,
+        borderWidth: 2,
+        tension: 0.3,
+        pointRadius: 4
+      },
+      {
+        label: 'Kumulált egyenleg',
+        data: this.balanceData,
+        fill: false,
+        borderWidth: 2,
+        tension: 0.2,
+        pointRadius: 0,
+        yAxisID: 'y1'
+      }
+    ]
   };
 
   public lineChartOptions: any = {
@@ -46,11 +71,8 @@ export class ChartComponent {
     plugins: {
       title: {
         display: true,
-        text: 'Pénzügyi mozgások',
+        text: 'Pénzügyi mozgások (napi bontás)',
         font: { size: 18, weight: 'bold' }
-      },
-      legend: {
-        labels: { font: { size: 13 } }
       },
       tooltip: {
         callbacks: {
@@ -59,84 +81,82 @@ export class ChartComponent {
             return `${context.dataset.label}: ${val.toLocaleString('hu-HU')} Ft`;
           }
         }
+      },
+      legend: {
+        labels: { font: { size: 13 } }
       }
     },
     scales: {
       x: {
-        title: { display: true, text: 'Tranzakciók sorrendje' },
-        ticks: { font: { size: 12 } }
+        ticks: { maxRotation: 0, font: { size: 12 } },
+        title: { display: true, text: 'Dátum' }
       },
       y: {
+        position: 'left',
         title: { display: true, text: 'Összeg (Ft)' },
-        ticks: {
-          callback: (value: any) => Number(value).toLocaleString('hu-HU')
-        }
+        ticks: { callback: (value: any) => Number(value).toLocaleString('hu-HU') }
       },
       y1: {
         position: 'right',
         grid: { drawOnChartArea: false },
         title: { display: true, text: 'Kumulált egyenleg (Ft)' },
-        ticks: {
-          callback: (value: any) => Number(value).toLocaleString('hu-HU')
-        }
+        ticks: { callback: (value: any) => Number(value).toLocaleString('hu-HU') }
       }
     }
   };
 
+  constructor(private api: ApiService) {}
+
   async ngOnInit() {
     await this.loadChartData();
     this.updateChartDatasets();
-    setTimeout(() => this.chart?.update(), 0);
   }
 
+  // Betölti a backend adatait (API: GET /wallets/:userId vagy hasonló)
   async loadChartData(): Promise<void> {
-    // 💾 Mock adatok a MySQL tábla alapján
-    this.wallets = [
-      { ID: 1, walletID: 3, amount: 74433, categoryID: 15, type: 'kiadás' },
-      { ID: 2, walletID: 1, amount: 30000, categoryID: 2, type: 'kiadás' },
-      { ID: 3, walletID: 3, amount: 8336, categoryID: 7, type: 'kiadás' },
-      { ID: 4, walletID: 1, amount: 70239, categoryID: 3, type: 'bevétel' },
-      { ID: 5, walletID: 3, amount: 24584, categoryID: 10, type: 'kiadás' },
-      { ID: 6, walletID: 3, amount: 20657, categoryID: 1, type: 'kiadás' },
-      { ID: 7, walletID: 3, amount: 25000, categoryID: 9, type: 'kiadás' },
-      { ID: 8, walletID: 3, amount: 50000, categoryID: 10, type: 'bevétel' },
-      { ID: 9, walletID: 4, amount: 10000, categoryID: 2, type: 'kiadás' },
-      { ID: 10, walletID: 4, amount: 40000, categoryID: 4, type: 'bevétel' },
-      { ID: 11, walletID: 5, amount: 4000, categoryID: 2, type: 'kiadás' },
-      { ID: 12, walletID: 3, amount: 66301, categoryID: 3, type: 'bevétel' },
-      { ID: 13, walletID: 3, amount: 66068, categoryID: 2, type: 'bevétel' },
-      { ID: 14, walletID: 2, amount: 75246, categoryID: 2, type: 'kiadás' },
-      { ID: 15, walletID: 3, amount: 58121, categoryID: 3, type: 'bevétel' },
-      { ID: 16, walletID: 2, amount: 11200, categoryID: 9, type: 'kiadás' },
-      { ID: 17, walletID: 3, amount: 67202, categoryID: 3, type: 'bevétel' },
-      { ID: 18, walletID: 5, amount: 27220, categoryID: 5, type: 'kiadás' },
-      { ID: 19, walletID: 3, amount: 31582, categoryID: 9, type: 'kiadás' },
-      { ID: 20, walletID: 2, amount: 20896, categoryID: 5, type: 'kiadás' },
-      { ID: 21, walletID: 3, amount: 12328, categoryID: 5, type: 'bevétel' }
-    ];
+    try {
+      const resp = await this.api.select('wallets', this.userId);
+      if (resp.status === 200 && Array.isArray(resp.data)) {
+        // Feltételezzük, hogy resp.data WalletRecord[] szerkezetű
+        this.rawRecords = resp.data as WalletRecord[];
 
-    // címkék: T1, T2, T3, stb.
-    this.labels = this.wallets.map((_, i) => `T${i + 1}`);
+        // rendezés dátum szerint (asc)
+        this.rawRecords.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
 
-    this.incomeData = [];
-    this.expenseData = [];
-    this.balanceData = [];
+        // Átalakítás napi aggregátumra (ha több tétel ugyanazon a napon)
+        const map = new Map<string, { income: number; expense: number }>();
+        for (const r of this.rawRecords) {
+          const day = new Date(r.date).toISOString().slice(0, 10); // YYYY-MM-DD
+          const existing = map.get(day) ?? { income: 0, expense: 0 };
+          if (r.amount >= 0) existing.income += r.amount;
+          else existing.expense += Math.abs(r.amount); // kiadás pozitívban tárolva
+          map.set(day, existing);
+        }
 
-    let cumBalance = 0;
-    for (const tx of this.wallets) {
-      if (tx.type === 'bevétel') {
-        this.incomeData.push(tx.amount);
-        this.expenseData.push(0);
-        cumBalance += tx.amount;
+        // Kihúzzuk a címkéket (dátumok) és a dataset-eket
+        this.labels = Array.from(map.keys());
+        this.incomeData = [];
+        this.expenseData = [];
+        this.balanceData = [];
+
+        let cumBalance = 0;
+        for (const day of this.labels) {
+          const val = map.get(day)!;
+          this.incomeData.push(Math.round(val.income));
+          this.expenseData.push(Math.round(val.expense));
+          cumBalance += (val.income - val.expense);
+          this.balanceData.push(Math.round(cumBalance));
+        }
       } else {
-        this.expenseData.push(tx.amount);
-        this.incomeData.push(0);
-        cumBalance -= tx.amount;
+        console.warn('Unexpected response from API:', resp);
       }
-      this.balanceData.push(cumBalance);
+    } catch (err) {
+      console.error('Hiba történt a chart adatlekéréskor', err);
+      // értesítés / UI feedback ide
     }
   }
 
+  // Frissíti a chart komponens adatstruktúráját
   updateChartDatasets() {
     this.lineChartData = {
       labels: this.labels,
@@ -144,7 +164,7 @@ export class ChartComponent {
         {
           label: 'Bevételek',
           data: this.incomeData,
-          borderColor: 'rgb(28, 137, 240)',
+          borderColor: 'rgb(76,175,80)',
           backgroundColor: 'rgba(76,175,80,0.1)',
           fill: false,
           borderWidth: 2,
@@ -154,15 +174,28 @@ export class ChartComponent {
         {
           label: 'Kiadások',
           data: this.expenseData,
-          borderColor: 'rgb(184, 54, 244)',
-          backgroundColor: 'rgba(244,67,54,0.1)',
+          borderColor: 'rgb(244,67,54)',
+          backgroundColor: 'rgba(244,67,54,0.08)',
           fill: false,
           borderWidth: 2,
           tension: 0.3,
           pointRadius: 4
         },
-       
+        {
+          label: 'Kumulált egyenleg',
+          data: this.balanceData,
+          borderColor: 'rgb(33,150,243)',
+          backgroundColor: 'rgba(33,150,243,0.05)',
+          fill: false,
+          borderWidth: 2,
+          tension: 0.2,
+          pointRadius: 0,
+          yAxisID: 'y1'
+        }
       ]
     };
+
+    
+    //setTimeout(() => this.chart?.update(), 0);
   }
 }
