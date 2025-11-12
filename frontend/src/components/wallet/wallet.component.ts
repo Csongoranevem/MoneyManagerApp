@@ -7,6 +7,7 @@ import { Wallet } from '../../interfaces/wallet';
 import { FormsModule } from '@angular/forms';
 import { MessageService } from '../../services/message.service';
 import * as bootstrap from 'bootstrap'
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-wallet',
@@ -26,7 +27,7 @@ export class WalletComponent implements OnInit {
   }
 
 
-  userId: number = 1; // login utan megkapja
+  userId: number = this.authService.getToken(); // login utan megkapja
   wallets: Wallet[] = [];
   walletID: number = 1;
   categoryID: number = 0;
@@ -46,7 +47,8 @@ export class WalletComponent implements OnInit {
 
   constructor(
     private apiService: ApiService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private authService: AuthService
   ) {
     this.walletBalance = 0;
   }
@@ -54,6 +56,7 @@ export class WalletComponent implements OnInit {
   async getWallets() {
     const response = await this.apiService.select('wallets', this.userId);
     this.wallets = response.data;
+    console.log(this.userId);
 
   }
 

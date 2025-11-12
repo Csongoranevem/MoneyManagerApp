@@ -27,6 +27,10 @@ export class AuthService {
     localStorage.setItem(this.tokenName, token)
   }
 
+  getToken():number{
+    return sessionStorage.getItem(this.tokenName.toString()) ? JSON.parse(sessionStorage.getItem(this.tokenName)!).ID : 0
+  }
+
   login(token:string){
     sessionStorage.setItem(this.tokenName,token)
     this.Isloggedin.next(true)
