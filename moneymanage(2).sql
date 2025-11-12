@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2025. Nov 09. 22:07
+-- Létrehozás ideje: 2025. Nov 12. 22:48
 -- Kiszolgáló verziója: 10.4.32-MariaDB
 -- PHP verzió: 8.0.30
 
@@ -37,12 +37,6 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`ID`, `name`) VALUES
-(1, 'Food - Meal Kits'),
-(2, 'Clothing - Activewear'),
-(3, 'Home'),
-(4, 'Home'),
-(5, 'Kitchen'),
-(6, 'Fitness'),
 (7, 'Food - Deli'),
 (8, 'Art Supplies'),
 (9, 'Home'),
@@ -64,68 +58,44 @@ CREATE TABLE `transactions` (
   `walletID` int(11) NOT NULL,
   `amount` int(11) NOT NULL,
   `categoryID` int(11) NOT NULL,
-  `type` enum('kiadás','bevétel') NOT NULL
+  `type` enum('kiadás','bevétel') NOT NULL,
+  `date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
 -- A tábla adatainak kiíratása `transactions`
 --
 
-INSERT INTO `transactions` (`ID`, `walletID`, `amount`, `categoryID`, `type`) VALUES
-(1, 3, 74433, 15, 'kiadás'),
-(2, 1, 30000, 2, 'kiadás'),
-(3, 3, 8336, 7, 'kiadás'),
-(4, 1, 70239, 1, 'bevétel'),
-(5, 4, 24584, 10, 'kiadás'),
-(6, 3, 20657, 1, 'kiadás'),
-(7, 3, 25000, 1, 'kiadás'),
-(8, 3, 50000, 3, 'bevétel'),
-(9, 4, 10000, 2, 'kiadás'),
-(10, 4, 40000, 4, 'bevétel'),
-(11, 5, 4000, 2, 'kiadás'),
-(12, 1, 66301, 3, 'bevétel'),
-(13, 3, 66068, 2, 'bevétel'),
-(14, 2, 75246, 2, 'kiadás'),
-(15, 3, 58121, 2, 'bevétel'),
-(16, 2, 11200, 9, 'kiadás'),
-(17, 3, 67202, 1, 'kiadás'),
-(18, 5, 27252, 6, 'kiadás'),
-(19, 2, 31582, 9, 'kiadás'),
-(20, 2, 20896, 3, 'bevétel'),
-(21, 3, 12328, 5, 'bevétel'),
-(22, 1, 20284, 5, 'bevétel'),
-(23, 5, 67663, 2, 'bevétel'),
-(24, 2, 38993, 11, 'kiadás'),
-(25, 3, 63898, 4, 'bevétel'),
-(26, 1, 13657, 14, 'bevétel'),
-(27, 1, 70394, 5, 'kiadás'),
-(28, 5, 47881, 14, 'kiadás'),
-(29, 1, 70454, 12, 'kiadás'),
-(30, 3, 60669, 11, 'kiadás'),
-(31, 4, 46414, 15, 'kiadás'),
-(32, 3, 6301, 11, 'bevétel'),
-(33, 1, 70574, 12, 'kiadás'),
-(34, 3, 56423, 7, 'bevétel'),
-(35, 1, 42344, 11, 'bevétel'),
-(36, 1, 21641, 12, 'kiadás'),
-(37, 2, 39908, 15, 'kiadás'),
-(38, 4, 62377, 14, 'kiadás'),
-(39, 3, 59351, 8, 'bevétel'),
-(40, 5, 66162, 6, 'kiadás'),
-(41, 3, 10362, 15, 'kiadás'),
-(42, 1, 72115, 10, 'bevétel'),
-(43, 1, 32495, 8, 'bevétel'),
-(44, 2, 26040, 12, 'bevétel'),
-(45, 2, 35783, 9, 'kiadás'),
-(46, 1, 33295, 10, 'bevétel'),
-(47, 2, 30378, 15, 'kiadás'),
-(48, 4, 46242, 3, 'kiadás'),
-(49, 4, 19834, 14, 'bevétel'),
-(50, 3, 69367, 2, 'kiadás'),
-(51, 4, 14446, 3, 'kiadás'),
-(57, 1, 2000, 2, 'kiadás'),
-(64, 1, 300000, 14, 'bevétel'),
-(65, 5, 666667, 9, 'kiadás');
+INSERT INTO `transactions` (`ID`, `walletID`, `amount`, `categoryID`, `type`, `date`) VALUES
+(1, 1, 66025, 1, 'kiadás', '2025-10-20 00:43:28'),
+(2, 2, 60277, 7, 'kiadás', '2025-11-05 00:00:31'),
+(3, 2, 71557, 3, 'bevétel', '2025-11-09 18:23:18'),
+(4, 2, 88248, 3, 'bevétel', '2025-09-16 02:47:16'),
+(5, 2, 51668, 4, 'kiadás', '2025-10-21 20:45:17'),
+(6, 2, 93755, 2, 'kiadás', '2025-11-10 23:45:14'),
+(7, 2, 27049, 4, 'bevétel', '2025-10-16 11:50:59'),
+(8, 1, 75821, 8, 'bevétel', '2025-11-05 23:41:06'),
+(9, 2, 68092, 2, 'bevétel', '2025-09-04 01:53:52'),
+(10, 1, 78824, 6, 'kiadás', '2025-10-25 03:53:52'),
+(11, 1, 73723, 5, 'bevétel', '2025-09-08 17:55:13'),
+(13, 1, 67677, 6, 'kiadás', '2025-10-11 16:41:23'),
+(14, 2, 37826, 9, 'kiadás', '2025-10-06 23:40:46'),
+(15, 2, 95061, 4, 'kiadás', '2025-10-31 04:12:10'),
+(16, 1, 72196, 10, 'bevétel', '2025-09-28 03:34:56'),
+(17, 1, 31617, 9, 'kiadás', '2025-10-14 19:14:49'),
+(18, 2, 19212, 9, 'kiadás', '2025-10-20 15:12:55'),
+(19, 1, 9118, 2, 'kiadás', '2025-09-16 23:15:42'),
+(20, 1, 84348, 4, 'bevétel', '2025-09-06 23:46:59'),
+(21, 1, 27215, 4, 'kiadás', '2025-09-06 09:38:53'),
+(22, 1, 20117, 5, 'bevétel', '2025-09-17 21:40:53'),
+(23, 2, 23636, 10, 'kiadás', '2025-09-21 19:16:14'),
+(24, 1, 78170, 5, 'kiadás', '2025-10-01 03:41:39'),
+(25, 1, 27122, 7, 'bevétel', '2025-10-27 22:36:01'),
+(26, 2, 75969, 6, 'bevétel', '2025-10-13 05:26:31'),
+(27, 2, 91223, 3, 'bevétel', '2025-11-03 09:49:45'),
+(28, 1, 3436, 5, 'bevétel', '2025-09-23 16:46:57'),
+(29, 1, 75655, 4, 'bevétel', '2025-10-08 18:55:38'),
+(30, 2, 53010, 5, 'kiadás', '2025-09-14 03:44:40');
 
 -- --------------------------------------------------------
 
@@ -211,13 +181,13 @@ ALTER TABLE `wallets`
 -- AUTO_INCREMENT a táblához `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT a táblához `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
 -- AUTO_INCREMENT a táblához `users`
