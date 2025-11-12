@@ -64,6 +64,8 @@ export class NavbarComponent implements OnInit {
           { name: 'Egyenleg', url: 'wallet', icon: '' },
           { name: 'Profilom', url: 'profile', icon: '' },
           { name: 'Kategóriák', url: 'categories', icon: '' },
+          { name: 'Naptár', url: 'calendar', icon: '' },
+          { name: 'Gráf', url: 'chart', icon: '' },
           { name: 'Kilépés', url: 'logout', icon: '' },
         ]
       : [
